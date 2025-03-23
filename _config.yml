@@ -14,10 +14,10 @@ baseurl: ""
 # Of course don't forget to change the username and projectname to YOUR username and project
 
 # Name of website
-title: Mark Go Blog
+title: Mark Go
 
 # Short description of your site
-description: Mark Go Blog
+description: Mark Go blog
 
 # --- Navigation bar options --- #
 
@@ -81,7 +81,7 @@ footer-links-active:
 # Select which share links to show in posts
 share-links-active:
   twitter: true
-  facebook: true
+  facebook: false
   google: false
   linkedin: true
 
