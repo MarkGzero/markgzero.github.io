@@ -664,6 +664,8 @@ pre {
 pre code {
   white-space: pre-wrap;
   word-wrap: break-word;
+  padding-left: 5px; 
+  display: block; 
 }
 pre.highlight, .highlight > pre, td.code pre {
   background: #FAFAFA;
@@ -680,7 +682,7 @@ td.gutter pre {
   background-color: #fff;
 }
 .highlight > pre {
-  padding: 5;
+  padding: 0;
 }
 td.code pre {
   border-width: 0 0 0 2px;
