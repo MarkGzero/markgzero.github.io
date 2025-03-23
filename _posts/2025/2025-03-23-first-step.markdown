@@ -30,6 +30,8 @@ Thanks, Kratzert! :)
 
 ### PowerShell script
 
+using standard `markdown` formatting for PowerShell code blocks. 
+
 ```powershell
 Write-Host "Hello, World!"
 
@@ -40,6 +42,19 @@ if ($isAdmin) {
     Write-Host "Not running as Administrator"
 }
 ```
+
+using `kramdown` formatting for PowerShell code blocks. 
+
+~~~
+Write-Host "Hello, World!"
+$isAdmin = [bool]([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+if ($isAdmin) {
+    Write-Host "Running as Administrator"
+} else {
+    Write-Host "Not running as Administrator"
+}
+~~~
+{: .language-powershell}
 
 ### Python script
 
