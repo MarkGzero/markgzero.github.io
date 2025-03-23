@@ -101,6 +101,26 @@ class Program
 
 ## Images
 
+Testing how to add images to my blog posts.
+
+Using `markdown` formatting for images:
+
+```
+![PSGadget Serial example](/images/psgadgets/psgadget_serial.png)
+```
+
+![PSGadget Serial example](/images/psgadgets/psgadget_serial.png)
+
+using html formatting for images:
+
+```html
+<div class="fig figcenter fighighlight">
+  <div class="figcaption"><br> Example of PSGadget serial stream in a PowerShell console<br>
+  <img src="/images/psgadgets/psgadget_serial.png" alt="PSGadget Serial example" />
+  </div>
+</div>
+```
+
 <div class="fig figcenter fighighlight">
   <div class="figcaption"><br> Example of PSGadget serial stream in a PowerShell console<br>
   <img src="/images/psgadgets/psgadget_serial.png" alt="PSGadget Serial example" />
