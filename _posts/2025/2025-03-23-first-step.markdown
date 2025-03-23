@@ -16,15 +16,15 @@ comments: true
 
 Hello, world! This is my first post on my new blog. 
 
-## Setting Up My Environment
+## Setting Up My Blog
 
 How I built this blog:
 
-I didnt. 
+While I'd like to say that I built this blog from scratch, the truth is that... I didnt. 
 
-I forked it from [kratzert kratzert.github.io](https://github.com/kratzert/kratzert.github.io)
+I just forked it from [kratzert kratzert.github.io](https://github.com/kratzert/kratzert.github.io) then I just changed a some files and added my own content.
 
-Thanks, Kratzert!
+Thanks, Kratzert! :)
 
 ## Testing codeblock
 
