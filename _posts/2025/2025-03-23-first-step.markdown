@@ -32,14 +32,14 @@ Thanks, Kratzert! :)
 
 ```powershell
 Write-Host "Hello, World!"
+
+$isAdmin = [bool]([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+if ($isAdmin) {
+    Write-Host "Running as Administrator"
+} else {
+    Write-Host "Not running as Administrator"
+}
 ```
-
-using kramdown for code syntax highlighting:
-
-~~~
-Write-Host "Hello, World!"
-~~~
-{: .language-powershell}
 
 ### Python script
 
@@ -47,7 +47,7 @@ Write-Host "Hello, World!"
 print("Hello, World!")
 ```
 
-### C# script
+### C# 
 
 ```csharp
 using System;
@@ -63,8 +63,8 @@ class Program
 ## Images
 
 <div class="fig figcenter fighighlight">
+  <div class="figcaption"><br> Example of PSGadget serial stream in a PowerShell console<br>
   <img src="/images/psgadgets/psgadget_serial.png" alt="PSGadget Serial example" />
-  <div class="figcaption"><br> Example of PSGadget Serial<br>
   </div>
 </div>
 
