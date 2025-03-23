@@ -8,9 +8,8 @@ comments: true
 ---
 
 <div class="alert alert-info">
-<strong>2025-03-25T11:04:</strong>
-    - Trying to improve the formatting of the code blocks and include a copy button for easier copying.
-    - Added 5px left padding in code blocks.
+<strong>UPDATE: 2025-03-25T11:04: </strong>
+Adding 12px left padding to the code block.
 </div>
 
 
