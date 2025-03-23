@@ -36,7 +36,6 @@ Write-Host "Hello, World!"
 
 using kramdown for code syntax highlighting:
 
-```powers
 ~~~
 Write-Host "Hello, World!"
 ~~~
