@@ -8,8 +8,8 @@ comments: true
 ---
 
 <div class="alert alert-info">
-<strong>UPDATE: 2025-03-25T11:36: </strong>
-Added copy button to code blocks. Got it working. Now working on just styling it.
+<strong>UPDATE: 2025-03-25T11:38: </strong>
+Added copy button to code blocks. Got it working. Now working on just styling it. Trying multiple buttons if there are multiple code blocks in a post.
 </div>
 
 
@@ -71,18 +71,21 @@ testing `kramdown` formatting for PowerShell code blocks using four spaces or 1 
 
 ### Bash script
 
+{% include codeHeader.html %}
 ```bash
 echo "Hello, World!"
 ```
 
 ### Python script
 
+{% include codeHeader.html %}
 ```python
 print("Hello, World!")
 ```
 
 ### C# 
 
+{% include codeHeader.html %}
 ```csharp
 using System;
 class Program
