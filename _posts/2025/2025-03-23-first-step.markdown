@@ -8,7 +8,7 @@ comments: true
 ---
 
 <div class="alert alert-info">
-<strong>UPDATE: 2025-03-25T11:47: </strong>
+<strong>UPDATE: 2025-03-25T11:50: </strong>
 Added copy button to code blocks.
 </div>
 
@@ -111,15 +111,16 @@ For convenience, its important for me to add a copy button to my code blocks.
 
 This is my first time working with Jekyll and there are more files that I expected.
 
-Found this guide: https://www.aleksandrhovhannisyan.com/blog/jekyll-copy-to-clipboard/ which was really helpful. I tried to follow along but I had to make some adjustments and still count get it to work. The button was there, but it was not copying the code to the clipboard.
+Found this guide:   
+https://www.aleksandrhovhannisyan.com/blog/jekyll-copy-to-clipboard/   
+which was really helpful. I tried to follow along but I had to make some adjustments and still couldnt get it to work. The button was showing, but it was not copying the code to the clipboard.
 
 Eventually, I found the solution in the issue comments:  
-
-https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/issues/35#issuecomment-641247503
+https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/issues/35#issuecomment-641247503  
 
 > Ah, I would advise against putting the script in your include file (this may be part of the problem, but I'm not sure). This means your <script></script> block will get included on the page as many times as you have code blocks (e.g., if you have 4 code blocks, you'll have 4 duplicate scripts). What you really want is to add the script to your layout file for blog posts (e.g., _layouts/post.html) at the very bottom so that each blog post gets one copy of that script. Let me know if that makes sense!
 
-Essentially, I was adding the script to the top of the posts.html file, when I should have been adding it to the bottom.
+Essentially, I was adding the script to the top of the `_layouts/posts.html` file, when I should have been adding it to the bottom.
 
 After I made that change, it worked!
 
