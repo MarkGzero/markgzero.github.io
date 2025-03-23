@@ -19,3 +19,22 @@ I didnt.
 
 I forked it from [kratzert kratzert.github.io](https://github.com/kratzert/kratzert.github.io)
 
+Thanks, Kratzert!
+
+## Testing codeblock
+
+```powershell
+Write-Host "Hello, World!"
+```
+
+```python
+print("Hello, World!")
+```
+
+## Summary
+
+That's it for now. Just a quick hello and a test of the blogging platform. 
+
+
+
+
