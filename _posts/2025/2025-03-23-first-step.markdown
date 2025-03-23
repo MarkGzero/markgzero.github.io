@@ -22,7 +22,7 @@ How I built this blog:
 
 While I'd like to say that I built this blog from scratch, the truth is that... I didnt. 
 
-I just forked it from [kratzert kratzert.github.io](https://github.com/kratzert/kratzert.github.io) then I just changed a some files and added my own content.
+I just forked it from [kratzert kratzert.github.io](https://github.com/kratzert/kratzert.github.io) then I just changed some files and added my own content.
 
 Thanks, Kratzert! :)
 
@@ -33,6 +33,14 @@ Thanks, Kratzert! :)
 ```powershell
 Write-Host "Hello, World!"
 ```
+
+using kramdown for code syntax highlighting:
+
+```powers
+~~~
+Write-Host "Hello, World!"
+~~~
+{: .language-powershell}
 
 ### Python script
 
