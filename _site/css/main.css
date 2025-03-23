@@ -660,11 +660,13 @@ table tr td :last-child {
 pre {
   font-size: 16px;
   line-height: 1.5em;
+  padding: 12px 16px; /* Adds space around the code */
+  overflow-x: auto;   /* Ensures horizontal scrolling still works */
+  background-color: #FAFAFA;
 }
 pre code {
   white-space: pre-wrap;
   word-wrap: break-word;
-  padding-left: 5px; 
   display: block; 
 }
 pre.highlight, .highlight > pre, td.code pre {
