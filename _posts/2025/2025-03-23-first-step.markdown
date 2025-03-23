@@ -8,8 +8,8 @@ comments: true
 ---
 
 <div class="alert alert-info">
-<strong>UPDATE: 2025-03-25T11:22: </strong>
-Adding code copy button to code blocks. from https://www.aleksandrhovhannisyan.com/blog/jekyll-copy-to-clipboard/
+<strong>UPDATE: 2025-03-25T11:24: </strong>
+Adding code copy button to code blocks. from https://www.aleksandrhovhannisyan.com/blog/jekyll-copy-to-clipboard/, made some mods to the layouts.
 </div>
 
 
