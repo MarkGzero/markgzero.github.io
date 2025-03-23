@@ -765,23 +765,6 @@ td.gutter {
   text-align: justify;
 }
 
-.copy-button {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: #333;
-  color: #fff;
-  border: none;
-  padding: 4px 8px;
-  font-size: 0.75rem;
-  border-radius: 4px;
-  cursor: pointer;
-  opacity: 0.7;
-  z-index: 10;
-}
-.copy-button:hover {
-  opacity: 1;
-}
-pre {
-  position: relative;
+.copy-code-button {
+  display: block;
 }

@@ -9,7 +9,7 @@ comments: true
 
 <div class="alert alert-info">
 <strong>UPDATE: 2025-03-25T11:04: </strong>
-Adding 12px left padding to the code block.
+Adding code copy button to code blocks. from https://www.aleksandrhovhannisyan.com/blog/jekyll-copy-to-clipboard/
 </div>
 
 
@@ -31,8 +31,9 @@ Thanks, Kratzert! :)
 
 ### PowerShell script
 
-using standard `markdown` formatting for PowerShell code blocks. 
+using standard `markdown` formatting for PowerShell code blocks, with a header include for the copy button.
 
+{% include codeHeader.html %}
 ```powershell
 Write-Host "Hello, World!"
 
