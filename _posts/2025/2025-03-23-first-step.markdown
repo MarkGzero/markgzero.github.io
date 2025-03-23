@@ -8,8 +8,8 @@ comments: true
 ---
 
 <div class="alert alert-info">
-<strong>UPDATE: 2025-03-25T11:32: </strong>
-still trying to add copy buttons to code blocks.
+<strong>UPDATE: 2025-03-25T11:36: </strong>
+Added copy button to code blocks. Got it working. Now working on just styling it.
 </div>
 
 
