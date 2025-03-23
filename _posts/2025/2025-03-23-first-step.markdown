@@ -8,7 +8,7 @@ comments: true
 ---
 
 <div class="alert alert-info">
-<strong>UPDATE: 2025-03-25T11:50: </strong>
+<strong>UPDATE: 2025-03-25 14:36: </strong>
 Added copy button to code blocks.
 </div>
 
@@ -28,6 +28,8 @@ I just forked it from [kratzert kratzert.github.io](https://github.com/kratzert/
 Thanks, Kratzert! :)
 
 ## Testing codeblock
+
+Here, I'm just testing the code block functionality since I plan to use this blog to share code snippets and examples.
 
 ### PowerShell script
 
