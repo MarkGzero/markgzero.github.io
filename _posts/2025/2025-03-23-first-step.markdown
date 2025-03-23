@@ -9,7 +9,7 @@ comments: true
 
 # My First Post
 
-Hello, world! This is my first post on my new blog. I'm excited to start this journey and share my thoughts with you. Stay tuned for more updates!
+Hello, world! This is my first post on my new blog. 
 
 ## Setting Up My Environment
 
