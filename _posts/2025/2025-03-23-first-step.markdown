@@ -56,6 +56,23 @@ if ($isAdmin) {
 ~~~
 {: .language-powershell}
 
+testing `kramdown` formatting for PowerShell code blocks using four spaces instead of backticks or tildes.
+
+    Write-Host "Hello, World!"
+    $isAdmin = [bool]([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+    if ($isAdmin) {
+        Write-Host "Running as Administrator"
+    } else {
+        Write-Host "Not running as Administrator"
+    }
+{: .language-powershell}
+
+### Bash script
+
+```bash
+echo "Hello, World!"
+```
+
 ### Python script
 
 ```python
