@@ -8,9 +8,10 @@ comments: true
 ---
 
 <div class="alert alert-info">
-<strong>Update Note:</strong>
-    Text here for any updates to this post.
+<strong>2025-03-25T11:04:</strong>
+    Trying to improve the formatting of the code blocks and include a copy button for easier copying.
 </div>
+
 
 # My First Post
 
@@ -56,7 +57,7 @@ if ($isAdmin) {
 ~~~
 {: .language-powershell}
 
-testing `kramdown` formatting for PowerShell code blocks using four spaces instead of backticks or tildes.
+testing `kramdown` formatting for PowerShell code blocks using four spaces or 1 tab, instead of backticks or tildes.
 
     Write-Host "Hello, World!"
     $isAdmin = [bool]([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
