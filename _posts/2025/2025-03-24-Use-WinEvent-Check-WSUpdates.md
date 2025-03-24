@@ -11,7 +11,7 @@ There are many reasons to review when/if Windows Update installs occur; if succe
 
 One of the quickest and reliable ways I've encountered so far is by using WinEvent provider `Microsoft-Windows-WindowsUpdateClient`
 
-Below is an example script, using `Get-WinEvent`. I prefer using a hashtable for filtering. More info about that here: ![link](https://learn.microsoft.com/en-us/powershell/scripting/samples/creating-get-winevent-queries-with-filterhashtable?view=powershell-5.1)
+Below is an example script, using `Get-WinEvent`. I prefer using a hashtable for filtering. More info about that here: [Creating Get-WinEvent queries with FilterHashtable](https://learn.microsoft.com/en-us/powershell/scripting/samples/creating-get-winevent-queries-with-filterhashtable?view=powershell-5.1)
 
 I'm going back 30 days, and im opting to filter in only events with "installation" in the message, and filter out any events for KB2267602 in this case. 
 
