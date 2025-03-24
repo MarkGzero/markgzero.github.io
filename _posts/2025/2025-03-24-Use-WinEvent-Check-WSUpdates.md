@@ -13,7 +13,7 @@ One of the quickest and reliable ways I've encountered so far is by using WinEve
 
 Below is an example script, using `Get-WinEvent`. I prefer using a hashtable for filtering. More info about that here: [Creating Get-WinEvent queries with FilterHashtable](https://learn.microsoft.com/en-us/powershell/scripting/samples/creating-get-winevent-queries-with-filterhashtable?view=powershell-5.1)
 
-I'm going back 30 days, and im opting filterto nly events with "installation" in the message, and filter out any events for KB2267602 in this case. 
+I'm going back 30 days and filtering for events with "installation" in the event message while filtering out any events for KB2267602 in this case, which are usually just security definition updates and add unnecessary noise to the results. 
 
 {% include codeHeader.html %}
 ```powershell
@@ -22,14 +22,16 @@ Providername="Microsoft-Windows-WindowsUpdateClient"
 starttime=(get-date).AddDays(-30)} | 
 ? message -match installation | 
 ? message -notmatch KB2267602 | 
-ft -AutoSize -Wrap
+ft -auto -wrap
 ```
 
-Example output
+## Example output
 
 ![image](https://github.com/user-attachments/assets/efca5b54-9daa-4625-aea4-819ab0c85654)
 
-I asked an AI assistant to rewrite my code according to recommended best practice:
+## Proper syntax
+
+I asked an AI assistant to rewrite my code according to recommended syntax/formatting: 
 
 {% include codeHeader.html %}
 ```powershell
