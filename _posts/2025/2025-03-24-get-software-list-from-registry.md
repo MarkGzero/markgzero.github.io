@@ -5,7 +5,7 @@ date: '2025-03-24 12:00:00'
 comments: true
 ---
 
-Posting here so I know where to look for next time I need this code snippet. 
+Posting here so I know where to look, next time I need this handy code snippet. 
 
 {% include codeHeader.html %}
 ```powershell
@@ -23,7 +23,7 @@ foreach($obj in $regUninstall){
 $InstalledSoftware | ? DisplayName | Sort DisplayName | ft
 ```
 
-And here's with property syntax and comments, thanks to AI assist:
+And here's with proper syntax and comments, thanks to AI assistance:
 
 {% include codeHeader.html %}
 ```
