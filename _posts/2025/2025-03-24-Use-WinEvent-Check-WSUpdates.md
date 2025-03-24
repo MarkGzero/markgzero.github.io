@@ -1,11 +1,9 @@
 ---
 layout: post
-title: 'Using WinEvent to list Windows Update installs'
+title: 'Using WinEvent to review Windows Update installs'
 date: '2025-03-24 09:00:00'
 comments: true
 ---
-
-# Using WinEvent to list Windows Update installs
 
 There are many reasons to review when/if Windows Update installs occur; if successful or not, etc...
 
