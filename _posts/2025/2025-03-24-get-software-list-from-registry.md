@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Get Install Software List From Windows Registry
+title: 'Get Install Software List From Windows Registry'
 date: '2025-03-24 12:00:00'
 comments: true
 ---
