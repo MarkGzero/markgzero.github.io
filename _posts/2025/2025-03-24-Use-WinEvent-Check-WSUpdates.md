@@ -13,7 +13,7 @@ One of the quickest and reliable ways I've encountered so far is by using WinEve
 
 Below is an example script, using `Get-WinEvent`. I prefer using a hashtable for filtering. More info about that here: [Creating Get-WinEvent queries with FilterHashtable](https://learn.microsoft.com/en-us/powershell/scripting/samples/creating-get-winevent-queries-with-filterhashtable?view=powershell-5.1)
 
-I'm going back 30 days, and im opting to filter in only events with "installation" in the message, and filter out any events for KB2267602 in this case. 
+I'm going back 30 days, and im opting filterto nly events with "installation" in the message, and filter out any events for KB2267602 in this case. 
 
 {% include codeHeader.html %}
 ```powershell
@@ -28,3 +28,20 @@ ft -AutoSize -Wrap
 Example output
 
 ![image](https://github.com/user-attachments/assets/efca5b54-9daa-4625-aea4-819ab0c85654)
+
+I asked an AI assistant to rewrite my code according to recommended best practice:
+
+{% include codeHeader.html %}
+```powershell
+# Define the start time for event log retrieval (30 days ago)
+$StartTime = (Get-Date).AddDays(-30)
+
+# Get events from Windows Update Client log within the specified time frame
+Get-WinEvent -FilterHashtable @{
+    ProviderName = "Microsoft-Windows-WindowsUpdateClient"
+    StartTime     = $StartTime
+} | Where-Object { 
+    $_.Message -match "installation" -and $_.Message -notmatch "KB2267602"
+} | Format-Table -AutoSize -Wrap 
+
+```
