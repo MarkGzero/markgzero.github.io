@@ -68,10 +68,10 @@ More concise, more elegant.
 {% include codeHeader.html %}
 ```powershell
  Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | 
- 	? DisplayName | 
+ 	Where-Object DisplayName | 
 	Select-Object DisplayName, DisplayVersion, InstallDate, Publisher | 
-	Sort DisplayName | 
-	Format-Table –AutoSize
+	Sort-Object DisplayName | 
+	Format-Table –AutoSize -Wrap
 ```
 
 What am I even doing with my life. 
