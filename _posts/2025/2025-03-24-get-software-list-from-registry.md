@@ -26,7 +26,7 @@ $InstalledSoftware | ? DisplayName | Sort DisplayName | ft
 And here's with proper syntax and comments, thanks to AI assistance:
 
 {% include codeHeader.html %}
-```
+```powershell
 # Define the base registry key for installed software
 $UninstallKey = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"
 
