@@ -5,6 +5,12 @@ date: '2025-03-24 12:00:00'
 comments: true
 ---
 
+<div class="alert alert-info">
+<strong>UPDATE: 2025-03-24 12:14 </strong>
+Added link to Marc Carter's blog entry from 2013.
+</div>
+
+
 Posting here so I know where to look, next time I need this handy code snippet. 
 
 {% include codeHeader.html %}
@@ -54,3 +60,18 @@ $InstalledSoftware |
     Sort-Object -Property DisplayName | 
     Format-Table -AutoSize
 ```
+
+... I just remembered that [Marc Carter wrote a better script back in 2013](https://devblogs.microsoft.com/scripting/use-powershell-to-find-installed-software/)
+
+More concise, more elegant. 
+
+{% include codeHeader.html %}
+```powershell
+ Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | 
+ 	? DisplayName | 
+	Select-Object DisplayName, DisplayVersion, InstallDate, Publisher | 
+	Sort DisplayName | 
+	Format-Table –AutoSize
+```
+
+What am I even doing with my life. 
