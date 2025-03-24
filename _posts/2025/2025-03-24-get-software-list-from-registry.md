@@ -21,3 +21,4 @@ $apps | sort installdate -Descending
 Read Marc's blog. 
 Learn from the critical thinking thought process -- and appreciate PowerShell's consistency even after more than a decade later. 
 
+There's more at [https://devblogs.microsoft.com/scripting/](https://devblogs.microsoft.com/scripting/)
