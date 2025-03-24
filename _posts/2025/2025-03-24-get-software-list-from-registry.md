@@ -5,7 +5,7 @@ date: '2025-03-24 12:00:00'
 comments: true
 ---
 
-[Marc Carter wrote a script in 2013](https://devblogs.microsoft.com/scripting/use-powershell-to-find-installed-software/) that I still reference and use today. It's of the key blog posts that convinced me to learn PowerShell. 
+[Marc Carter wrote a script in 2013](https://devblogs.microsoft.com/scripting/use-powershell-to-find-installed-software/) that I still reference and use today. It's one of the key blog posts that convinced me to learn PowerShell. 
 
 {% include codeHeader.html %}
 ```powershell
