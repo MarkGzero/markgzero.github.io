@@ -9,7 +9,7 @@ comments: true
 
 ## When Enable-PSRemoting fails
 
-The ability to remotely execute commands is crucial for system adminds. 
+The ability to remotely execute commands is crucial for system admins. 
 
 This blog post is just a superficial review of this particular issue that I encounter occasionally whenever I try to run [Enable-PSRemoting](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7.5) -- but it fails. 
 
