@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Enabling PSRemoting: troubleshooting public NetConnection profile'
+title: 'Enable-PSRemoting: public network connection type?'
 date: ''
 excerpt: >-
   Sentence that serves a preview for the post
@@ -9,7 +9,9 @@ comments: true
 
 ## When Enable-PSRemoting fails
 
-This is an issue I encounter occasionally whenever I try to run [Enable-PSRemoting](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7.5) -- but it fails. 
+The ability to remotely execute commands is crucial for system adminds. 
+
+This blog post is just a superficial review of this particular issue that I encounter occasionally whenever I try to run [Enable-PSRemoting](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7.5) -- but it fails. 
 
 ![image](https://github.com/user-attachments/assets/a77b2e5d-719b-4e1b-bb8d-7acffabe8096)
 
