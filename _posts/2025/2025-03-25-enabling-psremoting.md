@@ -7,13 +7,9 @@ excerpt: >-
 comments: true
 ---
 
+## When Enable-PSRemoting fails
 
-
-## Enable-PSRemoting fails
-
-*Disclaimer** This is just a quick superficial blog, not even really a guide.
-
-This is a common issue I encounter whenever I try to run [Enable-PSRemoting](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7.5) -- but it fails. 
+This is an issue I encounter occasionally whenever I try to run [Enable-PSRemoting](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7.5) -- but it fails. 
 
 ![image](https://github.com/user-attachments/assets/a77b2e5d-719b-4e1b-bb8d-7acffabe8096)
 
@@ -61,13 +57,15 @@ After setting the network category to "Private", I'm able to successfully run `E
 ![image](https://github.com/user-attachments/assets/6e711a24-5b98-4ce7-a9e3-edce84695787)
 
 ## References: 
-[Enable-PSRemoting](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-5.1)
-[Get-NetAdapter](https://learn.microsoft.com/en-us/powershell/module/netadapter/get-netadapter?view=windowsserver2025-ps)
-[Get-NetConnectionProfile](https://learn.microsoft.com/en-us/powershell/module/netconnection/get-netconnectionprofile?view=windowsserver2025-ps)
-[Set-NetConnectionProfile](https://learn.microsoft.com/en-us/powershell/module/netconnection/set-netconnectionprofile?view=windowsserver2025-ps)
 
-[about_Remote_Troubleshooting](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_remote_troubleshooting?view=powershell-7.5)
-[Chapter 8 - PowerShell remoting](https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/08-powershell-remoting?view=powershell-5.1)
+[Enable-PSRemoting](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-5.1)  
+[Get-NetAdapter](https://learn.microsoft.com/en-us/powershell/module/netadapter/get-netadapter?view=windowsserver2025-ps)  
+[Get-NetConnectionProfile](https://learn.microsoft.com/en-us/powershell/module/netconnection/get-netconnectionprofile?view=windowsserver2025-ps)  
+[Set-NetConnectionProfile](https://learn.microsoft.com/en-us/powershell/module/netconnection/set-netconnectionprofile?view=windowsserver2025-ps)  
+[about_PSSessions](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_pssessions?view=powershell-5.1)  
+[about_PSSession_Details](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_pssession_details?view=powershell-5.1)  
+[about_Remote_Troubleshooting](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_remote_troubleshooting?view=powershell-5.1)   
+[Chapter 8 - PowerShell remoting](https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/08-powershell-remoting?view=powershell-5.1)   
 
 
 
