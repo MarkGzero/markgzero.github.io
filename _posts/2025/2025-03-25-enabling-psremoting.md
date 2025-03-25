@@ -3,7 +3,7 @@ layout: post
 title: 'Enable-PSRemoting: public network connection type?'
 date: '2025-03-25 13:46'
 excerpt: >-
-  Sentence that serves a preview for the post
+  Enable-PSRemoting fails. What's this about a public network connection type? 
 comments: true
 ---
 
@@ -57,6 +57,16 @@ With `Set-NetConnectionProfile` it's possible to programatically modify the conn
 After setting the network category to "Private", I'm able to successfully run `Enable-PSRemoting -Force` this time. 
 
 ![image](https://github.com/user-attachments/assets/6e711a24-5b98-4ce7-a9e3-edce84695787)
+
+## Summary
+
+From a [Microsoft web page about network settings](https://support.microsoft.com/en-us/windows/essential-network-settings-and-tasks-in-windows-f21a9bbc-c582-55cd-35e0-73431160a1b9)
+
+> Public network (Recommended). Use this for networks you connect to at home, work, or in a public place. You should use this in most cases. Your PC will be hidden from other devices on the network. Therefore, you can’t use your PC for file and printer sharing.
+
+> Private network. Your PC is discoverable to other devices on the network, and you can use your PC for file and printer sharing. You should know and trust the people and devices on the network.
+
+There's more to it than just these two definitions, but that's good enough for this post. 
 
 ## References: 
 
