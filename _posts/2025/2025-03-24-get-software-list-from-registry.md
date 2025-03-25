@@ -12,7 +12,7 @@ comments: true
 Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion, InstallDate, Publisher
 ```
 
-Here's how I generally use it.
+Here's how I generally use it; assigning output to a variable for later use, then sorting by descending install date:
 
 {% include codeHeader.html %}
 ```powershell
