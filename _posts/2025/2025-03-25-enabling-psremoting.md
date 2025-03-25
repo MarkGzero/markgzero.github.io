@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Enable-PSRemoting: public network connection type?'
-date: ''
+date: '2025-03-25 13:46'
 excerpt: >-
   Sentence that serves a preview for the post
 comments: true
