@@ -26,7 +26,7 @@ These days, I know better. (...usually)
 
 If we actually look closely at the red text, it clearly states that: 
 
-> firewall exception will not work since one of the network connection types on this machine is set to Public. Change the network connection type to either Domain or Private and try again. 
+> WinRM firewall exception will not work since one of the network connection types on this machine is set to Public. Change the network connection type to either Domain or Private and try again. 
 
 So... seems PSremoting can't be enabled because of a network connection type. But, how do I fix that? 
 
