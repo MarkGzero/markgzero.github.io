@@ -24,7 +24,7 @@ Invoke-Command "SERVER01" {(Get-NetTCPConnection -OwningProcess (Get-Process "sq
 ```
 ## Breakdown
 
-The one-liner is a combination of several commands: 
+The one-liner is a combination of several commands and its kind of long. Let's break it down to its components to understand the sequence of commands that will eventually output the desired actionable information, in this case, the name of the user. 
 
 ```powershell
 # get sqlserver process id
@@ -57,9 +57,12 @@ Invoke-Command "SERVER01" {(Get-NetTCPConnection -OwningProcess (Get-Process "sq
 Invoke-Command "SERVER01" {(Get-NetTCPConnection -OwningProcess (Get-Process "sqlservr").ID | Where-Object State -eq "Established" | Select-Object RemoteAddress -Unique).RemoteAddress} | Foreach-Object {quser /server:$_}
 ```
 
-## Example Output
+## Example Output / Summary
 
 ```powershell
  USERNAME              SESSIONNAME        ID  STATE   IDLE TIME  LOGON TIME
 >mark.go               console             1  Active      none   4/7/2025 6:34 AM
 ```
+While the output is the familiar output of `quser`, the difference is that we indirectly derived the target machine from just knowing the SQL Server hostname.
+
+-Mark
