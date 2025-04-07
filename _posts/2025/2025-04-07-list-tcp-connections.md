@@ -26,34 +26,34 @@ Invoke-Command "SERVER01" {(Get-NetTCPConnection -OwningProcess (Get-Process "sq
 
 The one-liner is a combination of several commands and its kind of long. Let's break it down to its components to understand the sequence of commands that will eventually output the desired actionable information, in this case, the name of the user. 
 
+1. Get sqlserver process ID
 ```powershell
-# get sqlserver process id
 (Get-Process "sqlservr").ID
 ```
 NOTE: Process name is actually `sqlservr` with only one `e`
 
+2. Get TCP connections which belong to the sqlserver instance/s
 ```powershell
-# get tcp connections which belong to the sqlserver instance/s
 Get-NetTCPConnection -OwningProcess (Get-Process "sqlservr").ID
 ```
 
+3. Filter for `Established` connections and return only unique remote IP address
 ```powershell
-# filter for Established connections and return only unique remote IP address
 Get-NetTCPConnection -OwningProcess (Get-Process "sqlservr").ID | Where-Object State -eq "Established" | Select-Object RemoteAddress -Unique
 ```
 
+4. Output only the remote IPaddresses
 ```powershell
-# output only the remote IPaddresses
 (Get-NetTCPConnection -OwningProcess (Get-Process "sqlservr").ID | Where-Object State -eq "Established" | Select-Object RemoteAddress -Unique).RemoteAddress
 ```
 
+5. Execute on remote server using `Invoke-Command`
 ```powershell
-# execute on remote server using invoke-command
 Invoke-Command "SERVER01" {(Get-NetTCPConnection -OwningProcess (Get-Process "sqlservr").ID | Where-Object State -eq "Established" | Select-Object RemoteAddress -Unique).RemoteAddress}
 ```
 
+6. Process returned connection IP addresses and use with `quser` to identify users
 ```powershell
-# process returned connection IPaddresses and use with quser
 Invoke-Command "SERVER01" {(Get-NetTCPConnection -OwningProcess (Get-Process "sqlservr").ID | Where-Object State -eq "Established" | Select-Object RemoteAddress -Unique).RemoteAddress} | Foreach-Object {quser /server:$_}
 ```
 
