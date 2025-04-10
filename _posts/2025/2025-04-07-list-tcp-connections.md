@@ -1,13 +1,13 @@
 ---
 layout: post
-title: 'Identify User Connections to an SQL Server'
+title: 'Identify Computer and User Connections to an SQL Server'
 date: '2025-04-07'
 excerpt: >-
   Discovering who is connected to an SQL Instance
 comments: true
 ---
 
-Before rebooting a server for system administration purposes, it's generally a good idea to make sure users arent actively connected and in the middle of important work. 
+Before rebooting an SQL server for system administration purposes, it's generally a good idea to make sure users arent actively connected and in the middle of important work. 
 
 IF there are users connected, it could be useful to identify them so they can be properly notified. 
 
@@ -15,63 +15,45 @@ I'm just gonna quickly go over my solution for this problem using PowerShell -- 
 
 This script works in my environment, where I have administrative privileges in an Active Directory domain and all users and computers are domain-joined. It may need to be modified for other environments.
 
-## The One-Liner
+## Script
 
-This one-liner will return the users on the host with the IPaddress with an established TCP connection with the sqlservr process running on server SERVER01.
+Run this from an elevated PowerShell console:
 
-NOTE: `sqlservr` with only one `e` is the correct process name for Microsoft SQL Server. It only looks like a typo.
-
-```powershell
-Invoke-Command "SERVER01" {(Get-NetTCPConnection -OwningProcess (Get-Process "sqlservr").ID | Where-Object State -eq "Established" | Select-Object RemoteAddress -Unique).RemoteAddress} | Foreach-Object {quser /server:$_}
+```powershell 
+Invoke-Command -ComputerName "SERVER01" {
+  (Get-NetTCPConnection -OwningProcess (Get-Process "sqlservr").ID |
+  Where-Object State -eq "Established" |
+  Select-Object RemoteAddress -Unique).RemoteAddress
+  } | 
+Foreach-Object {
+  if($_){
+    # output quser of remote address machine
+    $_;quser /server:$_
+  } else {
+    # output message to host
+    "no sqlservr connections"
+  }
+}
 ```
+## Breakdown 
 
-Again, here's the full one-liner in its full glory
+- **Invoke remote command on SERVER01** using `Invoke-Command`.
+  
+- **Retrieve the process ID for `sqlservr`** (SQL Server) on SERVER01 using `Get-Process`.
 
-> Invoke-Command "SERVER01" {(Get-NetTCPConnection -OwningProcess (Get-Process "sqlservr").ID | Where-Object State -eq "Established" | Select-Object RemoteAddress -Unique).RemoteAddress} | Foreach-Object {quser /server:$_}
+- **Get all TCP connections owned by the SQL Server process** using `Get-NetTCPConnection -OwningProcess`.
 
-## Breakdown
+- **Filter for connections that are in the "Established" state** using `Where-Object State -eq "Established"`.
 
-The one-liner is a combination of several commands and its kind of long. 
+- **Select only the unique remote addresses** from the established connections using `Select-Object RemoteAddress -Unique`.
 
-Let's break it down to its components to understand the pipeline of commands that will eventually output the desired actionable information, in this case, the name of the user. 
+- **Return just the IP addresses** (`RemoteAddress` property) to the local session.
 
-### 1. Get sqlserver process ID
+- **Iterate over each remote IP address** using `ForEach-Object`.
 
-> (Get-Process "sqlservr").ID
+  - **If the IP address exists (`$_` is not null)**:
+    - Output the IP address.
+    - Run `quser /server:$_` to query active user sessions on the remote machine.
 
-### 2. Get TCP connections which belong to the sqlserver instance/s
-
-> Get-NetTCPConnection -OwningProcess (Get-Process "sqlservr").ID
-
-
-### 3. Filter for `Established` connections and return only unique remote IP address
-
-> Get-NetTCPConnection -OwningProcess (Get-Process "sqlservr").ID | Where-Object State -eq "Established" | Select-Object RemoteAddress -Unique
-
-
-### 4. Output only the remote IPaddresses
-
-> (Get-NetTCPConnection -OwningProcess (Get-Process "sqlservr").ID | Where-Object State -eq "Established" | Select-Object RemoteAddress -Unique).RemoteAddress
-
-
-### 5. Execute on remote server using `Invoke-Command`
-
-> Invoke-Command "SERVER01" {(Get-NetTCPConnection -OwningProcess (Get-Process "sqlservr").ID | Where-Object State -eq "Established" | Select-Object RemoteAddress -Unique).RemoteAddress}
-
-
-### 6. Process returned connection IP addresses and use with `quser` to identify users
-
-> Invoke-Command "SERVER01" {(Get-NetTCPConnection -OwningProcess (Get-Process "sqlservr").ID | Where-Object State -eq "Established" | Select-Object RemoteAddress -Unique).RemoteAddress} | Foreach-Object {quser /server:$_}
-
-
-## Example Output / Summary
-
-```powershell
-
- USERNAME              SESSIONNAME        ID  STATE   IDLE TIME  LOGON TIME
->mark.go               console             1  Active      none   4/7/2025 6:34 AM
-
-```
-While the output is the familiar output of `quser`, the difference is that we indirectly derived the target machine from just knowing the SQL Server hostname.
-
--Mark
+  - **If no connections are found (`$_` is null)**:
+    - Output the message `"no sqlservr connections"` to the host.
