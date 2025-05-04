@@ -32,7 +32,11 @@ The top-left corner represents (Row 0, Column 0). Each column is read top-down, 
 
 ## Example
 
+Example bitmap visualizer output for a smiley face (penny for scale):
+
 <img src="/images/bitmap_visualizer/example_smiley.png" alt="Example: Smiley">
+
+
 
 ## Code 
 
