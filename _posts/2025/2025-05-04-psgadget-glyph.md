@@ -3,16 +3,13 @@ layout: post
 title: 'Bitmap Visualizer'
 date: '2025-05-04'
 excerpt: >-
-  For SSD1306 OLED displays, this tool helps visualize the 8x8 pixel glyphs for custom fonts.
+   A simple GUI for editing an 8x8 pixel bitmap.
 comments: true
 ---
 
 ## What is this?
 
-<div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-  <img src="/images/bitmap_visualizer/bitmapvisualizer.png" alt="Bitmap Visualizer" style="width: 100%; max-width: 400px;"/>
-  <img src="/images/bitmap_visualizer/smile.png" alt="Bitmap Visualizer Dark Mode" style="width: 100%; max-width: 400px;"/>
-</div>
+<img src="/images/bitmap_visualizer/bitmapvisualizer.png" alt="Bitmap Visualizer" style="width: 100%; max-width: 400px;"/>
 
 This tool provides a simple GUI for editing an 8x8 pixel bitmap, ideal for generating data for LED matrix displays such as the SSD1306. As you toggle grid cells, corresponding binary and hexadecimal values update in real-time.
 
@@ -33,7 +30,11 @@ The top-left corner represents (Row 0, Column 0). Each column is read top-down, 
 • [Light/Dark Mode] toggles the UI theme.  
 • [Copy Hex Array] copies the current hex values to your clipboard.
 
-## Code Snippet
+## Example
+
+<img src="/images/bitmap_visualizer/example_smiley.png" alt="Example: Smiley">
+
+## Code 
 
 Copy and paste to a PowerShell console to run the GUI.
 
