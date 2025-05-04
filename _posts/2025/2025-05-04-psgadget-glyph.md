@@ -9,7 +9,11 @@ comments: true
 
 ## What is this?
 
+<div>
 <img src="/images/bitmap_visualizer/bitmapvisualizer.png" alt="Bitmap Visualizer" style="width: 100%; max-width: 400px; margin: auto; display: block;"/>
+
+<img src="/images/bitmap_visualizer/smile.png" alt="Bitmap Visualizer Dark Mode" style="width: 100%; max-width: 400px; margin: auto; display: block;"/>
+</div>
 
 This tool provides a simple GUI for editing an 8x8 pixel bitmap, ideal for generating data for LED matrix displays such as the SSD1306. As you toggle grid cells, corresponding binary and hexadecimal values update in real-time.
 
