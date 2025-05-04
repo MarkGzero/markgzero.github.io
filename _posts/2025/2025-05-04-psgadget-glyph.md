@@ -9,24 +9,24 @@ comments: true
 
 ## What is this?
 
-<img src="..\..\images\\bitmap_visualizer\\bitmapvisualizer.png" alt="Bitmap Visualizer" style="width: 100%; max-width: 400px;"/>
+<div>
+<img src="../../images/bitmap_visualizer/bitmapvisualizer.png" alt="Bitmap Visualizer" style="width: 100%; max-width: 400px;"/>
+</div>
 
 This tool provides a simple GUI for editing an 8x8 pixel bitmap, ideal for generating data for LED matrix displays such as the SSD1306. As you toggle grid cells, corresponding binary and hexadecimal values update in real-time.
 
 The top-left corner represents (Row 0, Column 0). Each column is read top-down, with the least significant bit at the top — equivalent to rotating the column’s binary value 90° counter-clockwise.
 
-
-
-**Usage**
+**Usage**  
 
 • Click on a grid cell to toggle between "On" (1) and "Off" (0).
 
-**Paint Mode**
+**Paint Mode**  
 
 • Hold down the Left-ALT key and hover over cells to quickly enable them (set to 1).  
 • Click a highlighted cell again to turn it off.
 
-**Buttons**
+**Buttons**  
 
 • [Reset Matrix] clears all grid cells.  
 • [Light/Dark Mode] toggles the UI theme.  
