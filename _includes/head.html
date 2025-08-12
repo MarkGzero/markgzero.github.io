@@ -117,4 +117,11 @@
   <meta name="twitter:image" content="{{ site.url }}{{ site.avatar }}" />
   {% endif %}
 
+  <script>
+    // Force dark mode by default
+    document.addEventListener('DOMContentLoaded', function() {
+      document.documentElement.classList.add('dark-mode');
+    });
+  </script>
+
 </head>
