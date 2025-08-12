@@ -780,7 +780,7 @@ td.gutter {
 }
 
 /* --- Dark Mode --- */
-@media (prefers-color-scheme: dark), html.dark-mode {
+@media (prefers-color-scheme: dark) {
   body {
     background: #181a1b !important;
     color: #e0e0e0 !important;
@@ -813,6 +813,39 @@ td.gutter {
     background-color: #3a2321 !important;
     border-left-color: #c0392b !important;
   }
+}
+
+html.dark-mode body {
+  background: #181a1b !important;
+  color: #e0e0e0 !important;
+}
+html.dark-mode a, html.dark-mode a:visited {
+  color: #80bfff;
+}
+html.dark-mode .navbar-custom {
+  background: #23272a !important;
+  border-bottom: 1px solid #333 !important;
+}
+html.dark-mode .main-content, html.dark-mode .main-explain-area {
+  background: transparent !important;
+  color: #e0e0e0 !important;
+}
+html.dark-mode pre, html.dark-mode code, html.dark-mode .highlighter-rouge, html.dark-mode .highlight {
+  background: #222 !important;
+  color: #e0e0e0 !important;
+  border-color: #444 !important;
+}
+html.dark-mode .box-note {
+  background-color: #23272a !important;
+  border-left-color: #2980b9 !important;
+}
+html.dark-mode .box-warning {
+  background-color: #2d2a1b !important;
+  border-left-color: #f1c40f !important;
+}
+html.dark-mode .box-error {
+  background-color: #3a2321 !important;
+  border-left-color: #c0392b !important;
 }
 
 html.dark-mode img, html.dark-mode .fig img, html.dark-mode .figleft img {
