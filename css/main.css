@@ -778,3 +778,43 @@ td.gutter {
   color: #575651;
   text-align: justify;
 }
+
+/* --- Dark Mode --- */
+@media (prefers-color-scheme: dark), html.dark-mode {
+  body {
+    background: #181a1b !important;
+    color: #e0e0e0 !important;
+  }
+  a, a:visited {
+    color: #80bfff;
+  }
+  .navbar-custom {
+    background: #23272a !important;
+    border-bottom: 1px solid #333 !important;
+  }
+  .main-content, .main-explain-area {
+    background: transparent !important;
+    color: #e0e0e0 !important;
+  }
+  pre, code, .highlighter-rouge, .highlight {
+    background: #222 !important;
+    color: #e0e0e0 !important;
+    border-color: #444 !important;
+  }
+  .box-note {
+    background-color: #23272a !important;
+    border-left-color: #2980b9 !important;
+  }
+  .box-warning {
+    background-color: #2d2a1b !important;
+    border-left-color: #f1c40f !important;
+  }
+  .box-error {
+    background-color: #3a2321 !important;
+    border-left-color: #c0392b !important;
+  }
+}
+
+html.dark-mode img, html.dark-mode .fig img, html.dark-mode .figleft img {
+  filter: brightness(0.85) contrast(1.1);
+}
