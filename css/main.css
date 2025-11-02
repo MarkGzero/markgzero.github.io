@@ -816,13 +816,23 @@ td.gutter {
   }
   table {
     border-color: #30363d !important;
+    color: inherit !important;
+  }
+  table tr {
+    background-color: transparent !important;
+    border-color: #30363d !important;
+  }
+  table tr:nth-child(2n) {
+    background-color: rgba(177, 186, 196, 0.12) !important;
   }
   table th, table td {
     border-color: #30363d !important;
     background-color: transparent !important;
+    color: inherit !important;
   }
   table th {
-    background-color: #161b22 !important;
+    background-color: rgba(177, 186, 196, 0.12) !important;
+    font-weight: 600 !important;
   }
   .box-note {
     background-color: #23272a !important;
@@ -873,13 +883,23 @@ html.dark-mode blockquote {
 }
 html.dark-mode table {
   border-color: #30363d !important;
+  color: inherit !important;
+}
+html.dark-mode table tr {
+  background-color: transparent !important;
+  border-color: #30363d !important;
+}
+html.dark-mode table tr:nth-child(2n) {
+  background-color: rgba(177, 186, 196, 0.12) !important;
 }
 html.dark-mode table th, html.dark-mode table td {
   border-color: #30363d !important;
   background-color: transparent !important;
+  color: inherit !important;
 }
 html.dark-mode table th {
-  background-color: #161b22 !important;
+  background-color: rgba(177, 186, 196, 0.12) !important;
+  font-weight: 600 !important;
 }
 html.dark-mode .box-note {
   background-color: #23272a !important;
