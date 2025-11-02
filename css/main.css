@@ -902,23 +902,30 @@ td.gutter {
     font-weight: 600 !important;
   }
   .copy-code-button {
-    background: rgba(13, 17, 23, 0.95) !important;
-    border-color: #30363d !important;
-    color: #e6edf3 !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
-  }
-  .copy-code-button:hover {
     background: #21262d !important;
     border-color: #30363d !important;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+    color: #e6edf3 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) !important;
+  }
+  .copy-code-button:hover {
+    background: #30363d !important;
+    border-color: #484f58 !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7) !important;
   }
   .copy-code-button:active {
     background: #161b22 !important;
+    border-color: #30363d !important;
   }
   .copy-code-button.copied {
     background: #238636 !important;
-    border-color: #238636 !important;
-    color: white !important;
+    border-color: #2ea043 !important;
+    color: #ffffff !important;
+  }
+  .copy-code-button svg {
+    opacity: 0.9 !important;
+  }
+  .copy-code-button.copied svg {
+    opacity: 1 !important;
   }
   .box-note {
     background-color: #23272a !important;
@@ -988,23 +995,30 @@ html.dark-mode table th {
   font-weight: 600 !important;
 }
 html.dark-mode .copy-code-button {
-  background: rgba(13, 17, 23, 0.95) !important;
-  border-color: #30363d !important;
-  color: #e6edf3 !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
-}
-html.dark-mode .copy-code-button:hover {
   background: #21262d !important;
   border-color: #30363d !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+  color: #e6edf3 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) !important;
+}
+html.dark-mode .copy-code-button:hover {
+  background: #30363d !important;
+  border-color: #484f58 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7) !important;
 }
 html.dark-mode .copy-code-button:active {
   background: #161b22 !important;
+  border-color: #30363d !important;
 }
 html.dark-mode .copy-code-button.copied {
   background: #238636 !important;
-  border-color: #238636 !important;
-  color: white !important;
+  border-color: #2ea043 !important;
+  color: #ffffff !important;
+}
+html.dark-mode .copy-code-button svg {
+  opacity: 0.9 !important;
+}
+html.dark-mode .copy-code-button.copied svg {
+  opacity: 1 !important;
 }
 html.dark-mode .box-note {
   background-color: #23272a !important;
