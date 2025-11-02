@@ -782,24 +782,47 @@ td.gutter {
 /* --- Dark Mode --- */
 @media (prefers-color-scheme: dark) {
   body {
-    background: #181a1b !important;
-    color: #e0e0e0 !important;
+    background: #0d1117 !important;
+    color: #e6edf3 !important;
   }
   a, a:visited {
-    color: #80bfff;
+    color: #58a6ff;
+  }
+  a:hover, a:focus {
+    color: #79c0ff;
   }
   .navbar-custom {
-    background: #23272a !important;
-    border-bottom: 1px solid #333 !important;
+    background: #161b22 !important;
+    border-bottom: 1px solid #30363d !important;
   }
   .main-content, .main-explain-area {
     background: transparent !important;
-    color: #e0e0e0 !important;
+    color: #e6edf3 !important;
   }
   pre, code, .highlighter-rouge, .highlight {
-    background: #222 !important;
-    color: #e0e0e0 !important;
-    border-color: #444 !important;
+    background: #161b22 !important;
+    color: #e6edf3 !important;
+    border-color: #30363d !important;
+  }
+  pre.highlight, .highlight > pre, td.code pre {
+    background: #0d1117 !important;
+    background-image: linear-gradient(#161b22 50%, #0d1117 50%) !important;
+    border-left: 7px solid #58a6ff !important;
+  }
+  blockquote {
+    color: #8b949e !important;
+    border-left: 4px solid #30363d !important;
+    padding-left: 16px !important;
+  }
+  table {
+    border-color: #30363d !important;
+  }
+  table th, table td {
+    border-color: #30363d !important;
+    background-color: transparent !important;
+  }
+  table th {
+    background-color: #161b22 !important;
   }
   .box-note {
     background-color: #23272a !important;
@@ -816,24 +839,47 @@ td.gutter {
 }
 
 html.dark-mode body {
-  background: #181a1b !important;
-  color: #e0e0e0 !important;
+  background: #0d1117 !important;
+  color: #e6edf3 !important;
 }
 html.dark-mode a, html.dark-mode a:visited {
-  color: #80bfff;
+  color: #58a6ff;
+}
+html.dark-mode a:hover, html.dark-mode a:focus {
+  color: #79c0ff;
 }
 html.dark-mode .navbar-custom {
-  background: #23272a !important;
-  border-bottom: 1px solid #333 !important;
+  background: #161b22 !important;
+  border-bottom: 1px solid #30363d !important;
 }
 html.dark-mode .main-content, html.dark-mode .main-explain-area {
   background: transparent !important;
-  color: #e0e0e0 !important;
+  color: #e6edf3 !important;
 }
 html.dark-mode pre, html.dark-mode code, html.dark-mode .highlighter-rouge, html.dark-mode .highlight {
-  background: #222 !important;
-  color: #e0e0e0 !important;
-  border-color: #444 !important;
+  background: #161b22 !important;
+  color: #e6edf3 !important;
+  border-color: #30363d !important;
+}
+html.dark-mode pre.highlight, html.dark-mode .highlight > pre, html.dark-mode td.code pre {
+  background: #0d1117 !important;
+  background-image: linear-gradient(#161b22 50%, #0d1117 50%) !important;
+  border-left: 7px solid #58a6ff !important;
+}
+html.dark-mode blockquote {
+  color: #8b949e !important;
+  border-left: 4px solid #30363d !important;
+  padding-left: 16px !important;
+}
+html.dark-mode table {
+  border-color: #30363d !important;
+}
+html.dark-mode table th, html.dark-mode table td {
+  border-color: #30363d !important;
+  background-color: transparent !important;
+}
+html.dark-mode table th {
+  background-color: #161b22 !important;
 }
 html.dark-mode .box-note {
   background-color: #23272a !important;
