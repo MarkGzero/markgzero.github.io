@@ -13,24 +13,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Fetch search data (posts)
     async function loadSearchData() {
-        try {
-            const response = await fetch('/search.json');
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            searchData = await response.json();
-        } catch (error) {
-            console.warn('Search data not available:', error);
-            // Try alternative path
+        const searchPaths = [
+            window.location.origin + '/search.json',
+            './search.json',
+            '../search.json',
+            '/search.json'
+        ];
+        
+        for (const path of searchPaths) {
             try {
-                const altResponse = await fetch('./search.json');
-                if (altResponse.ok) {
-                    searchData = await altResponse.json();
+                const response = await fetch(path);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
-            } catch (altError) {
-                console.warn('Alternative search path also failed:', altError);
+                const data = await response.json();
+                searchData = data;
+                return;
+            } catch (error) {
+                // Silent fail, try next path
             }
         }
+        console.warn('Search data could not be loaded from any path');
     }
 
     // Perform search
@@ -58,16 +61,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Display search results
     function displaySearchResults(results, query) {
         if (results.length === 0) {
-            searchResults.innerHTML = '<div class="search-no-results">No posts found</div>';
+            searchResults.innerHTML = '<div class="search-no-results">No posts found for "' + query + '"</div>';
         } else {
-            searchResults.innerHTML = results.map(post => `
-                <div class="search-result-item">
-                    <a href="${post.url}" class="search-result-link">
-                        <div class="search-result-title">${highlightText(post.title, query)}</div>
-                        <div class="search-result-excerpt">${highlightText(truncateText(post.content, 100), query)}</div>
-                    </a>
-                </div>
-            `).join('');
+            const resultsHtml = results.map(post => {
+                return `
+                    <div class="search-result-item">
+                        <a href="${post.url}" class="search-result-link">
+                            <div class="search-result-title">${highlightText(post.title, query)}</div>
+                            <div class="search-result-excerpt">${highlightText(truncateText(post.content, 100), query)}</div>
+                        </a>
+                    </div>
+                `;
+            }).join('');
+            searchResults.innerHTML = resultsHtml;
         }
         showSearchResults();
     }
