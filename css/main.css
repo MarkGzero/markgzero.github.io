@@ -1517,19 +1517,32 @@ html.dark-mode .search-results mark {
 
 .sidebar-search input {
   width: 100%;
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 13px;
+  padding: 10px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
   font-family: var(--font-secondary);
   background: #fff;
-  transition: border-color 0.2s ease;
+  color: #333;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  /* Disable spell check and autocorrect */
+  spellcheck: false;
+  autocorrect: off;
+  autocapitalize: none;
 }
 
 .sidebar-search input:focus {
-  outline: none;
   border-color: #008AFF;
-  box-shadow: 0 0 0 2px rgba(0, 138, 255, 0.1);
+  box-shadow: 0 0 0 2px rgba(0, 138, 255, 0.15), 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.sidebar-search input:hover {
+  border-color: #ccc;
 }
 
 .sidebar-search-results {
@@ -1585,13 +1598,23 @@ html.dark-mode .search-results mark {
 
 /* Dark mode search styles */
 html.dark-mode .sidebar-search input {
-  background: #4a4a4a;
-  border-color: #666;
+  background: #3a3a3a;
+  border-color: #555;
   color: #ddd;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 html.dark-mode .sidebar-search input:focus {
   border-color: #008AFF;
+  box-shadow: 0 0 0 2px rgba(0, 138, 255, 0.25), 0 2px 6px rgba(0,0,0,0.2);
+}
+
+html.dark-mode .sidebar-search input:hover {
+  border-color: #777;
+}
+
+html.dark-mode .sidebar-search input::placeholder {
+  color: #999;
 }
 
 html.dark-mode .sidebar-search-result {
