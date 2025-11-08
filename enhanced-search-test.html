@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enhanced Sidebar Search Test</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <style>
+        body { margin: 20px; font-family: Arial, sans-serif; background: #f5f5f5; }
+        .test-container { display: flex; gap: 20px; }
+        .sidebar-test { width: 250px; border: 1px solid #ddd; padding: 20px; background: white; }
+        .main-content { flex: 1; padding: 20px; background: white; border: 1px solid #ddd; }
+        .example { margin: 15px 0; padding: 10px; background: #f9f9f9; border-left: 3px solid #008AFF; }
+        .example strong { color: #008AFF; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="sidebar-test">
+            <div class="sidebar-section">
+                <h5><i class="fa fa-search"></i> Quick Search</h5>
+                <div class="sidebar-search">
+                    <input type="text" id="sidebar-search-input" placeholder="Search posts..." 
+                           autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="none" />
+                    <div id="sidebar-search-results" class="sidebar-search-results"></div>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <h2>Enhanced Search Feature</h2>
+            <p>Now searches <strong>both titles AND post content!</strong></p>
+            
+            <h3>Try These Searches:</h3>
+            
+            <div class="example">
+                <strong>Search: "micropython"</strong>
+                <p>Will find "Getting Started with <strong>mpremote</strong>" because the post content mentions MicroPython</p>
+            </div>
+            
+            <div class="example">
+                <strong>Search: "registry"</strong>
+                <p>Will find "Get Software List from <strong>Registry</strong>" by matching the title</p>
+            </div>
+            
+            <div class="example">
+                <strong>Search: "cmdlet"</strong>
+                <p>Will find PowerShell posts that mention "cmdlet" in their content</p>
+            </div>
+            
+            <div class="example">
+                <strong>Search: "automat"</strong>
+                <p>Will find posts about automation and PowerShell remoting</p>
+            </div>
+            
+            <div class="example">
+                <strong>Search: "mana"</strong>
+                <p>Will find "Enabling PSRemoting for Remote <strong>Management</strong>" by content match</p>
+            </div>
+
+            <hr style="margin: 30px 0; border: none; border-top: 1px solid #ddd;">
+            
+            <h3>Key Improvements:</h3>
+            <ul>
+                <li><strong>Title Search:</strong> Matches words in post titles</li>
+                <li><strong>Content Search:</strong> Matches words anywhere in the blog post</li>
+                <li><strong>Smart Results:</strong> Shows up to 8 most relevant results</li>
+                <li><strong>3+ Characters:</strong> Minimum 3 characters to trigger search</li>
+                <li><strong>Bold Highlighting:</strong> Search terms are highlighted in bold in results</li>
+                <li><strong>Click to Navigate:</strong> Direct links to matching blog posts</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Sample post data with content (simulating Jekyll's post.content)
+        const searchData = [
+            {
+                title: "Getting Started with mpremote",
+                url: "/2025/08/12/getting-started-with-mpremote.html",
+                date: "August 12, 2025",
+                content: "a comprehensive guide to using mpremote for micropython development learn how to connect run scripts and manage files on your micropython devices remotely mpremote is a powerful command line tool for working with micropython devices this post covers installation basic usage and advanced features for remote micropython development"
+            },
+            {
+                title: "PowerShell Get-Member Essentials",
+                url: "/2025/11/02/powershell-get-member-essentials.html",
+                date: "November 02, 2025",
+                content: "master the get member cmdlet in powershell to explore object properties and methods effectively learn how to use powershell's get member cmdlet to discover object properties methods and structure for better scripting the cmdlet shows all members of an object"
+            },
+            {
+                title: "PSGadget Glyph Development",
+                url: "/2025/05/04/psgadget-glyph.html",
+                date: "May 04, 2025",
+                content: "creating custom glyph interfaces for powershell gadgets and visual elements develop custom glyphs and visual elements for powershell tools and interfaces using advanced powershell techniques"
+            },
+            {
+                title: "Footpedal Interface Development",
+                url: "/2025/05/10/footpedal-interface.html",
+                date: "May 10, 2025",
+                content: "building custom footpedal interfaces for enhanced productivity and accessibility learn to create footpedal interfaces for hands free control and improved workflow efficiency hardware integration development"
+            },
+            {
+                title: "List TCP Connections with PowerShell",
+                url: "/2025/04/07/list-tcp-connections.html",
+                date: "April 07, 2025",
+                content: "how to enumerate and monitor tcp network connections using powershell cmdlets and techniques discover powershell methods for listing monitoring and analyzing tcp network connections netstat alternatives"
+            },
+            {
+                title: "Enabling PSRemoting for Remote Management",
+                url: "/2025/03/25/enabling-psremoting.html",
+                date: "March 25, 2025",
+                content: "configure powershell remoting for secure remote windows management and automation step by step guide to enable and configure powershell remoting for remote windows administration"
+            },
+            {
+                title: "Use WinEvent to Check Windows Updates",
+                url: "/2025/03/24/Use-WinEvent-Check-WSUpdates.html",
+                date: "March 24, 2025",
+                content: "monitor windows update status and history using get winevent powershell cmdlet learn to track windows update installation status and troubleshoot update issues with powershell"
+            },
+            {
+                title: "Get Software List from Registry",
+                url: "/2025/03/24/get-software-list-from-registry.html",
+                date: "March 24, 2025",
+                content: "extract installed software information directly from windows registry using powershell query the windows registry to retrieve comprehensive installed software lists with powershell hklm software"
+            },
+            {
+                title: "First Step - Blog Launch",
+                url: "/2025/03/23/first-step.html",
+                date: "March 23, 2025",
+                content: "welcome to my technical blog this inaugural post covers the setup and goals for this development focused blog introduction to the blog covering topics like powershell automation and development tools"
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('sidebar-search-input');
+            const searchResults = document.getElementById('sidebar-search-results');
+            
+            if (searchInput && searchResults) {
+                searchInput.addEventListener('input', function() {
+                    const query = this.value.trim().toLowerCase();
+                    
+                    if (query.length >= 3) {
+                        const filteredPosts = searchData.filter(post => {
+                            // Search in both title and content
+                            return post.title.toLowerCase().includes(query) || 
+                                   post.content.includes(query);
+                        });
+                        
+                        displaySearchResults(filteredPosts, query);
+                        searchResults.style.display = 'block';
+                    } else {
+                        searchResults.style.display = 'none';
+                    }
+                });
+                
+                // Hide results when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.sidebar-search')) {
+                        searchResults.style.display = 'none';
+                    }
+                });
+            }
+            
+            function displaySearchResults(posts, query) {
+                if (posts.length === 0) {
+                    searchResults.innerHTML = '<div class="sidebar-search-no-results">No posts found</div>';
+                    return;
+                }
+                
+                const resultsHTML = posts.slice(0, 8).map(post => `
+                    <div class="sidebar-search-result">
+                        <div class="sidebar-search-date">${post.date}</div>
+                        <a href="${post.url}">${highlightMatch(post.title, query)}</a>
+                    </div>
+                `).join('');
+                
+                searchResults.innerHTML = resultsHTML;
+            }
+            
+            function highlightMatch(text, query) {
+                const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+                return text.replace(regex, '<strong>$1</strong>');
+            }
+            
+            function escapeRegExp(string) {
+                return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            }
+        });
+    </script>
+</body>
+</html>

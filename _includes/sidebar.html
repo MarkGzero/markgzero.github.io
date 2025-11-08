@@ -115,7 +115,8 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       title: {{ post.title | jsonify }},
       url: {{ post.url | relative_url | jsonify }},
-      date: {{ post.date | date: "%B %d, %Y" | jsonify }}
+      date: {{ post.date | date: "%B %d, %Y" | jsonify }},
+      content: {{ post.content | strip_html | downcase | jsonify }}
     }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   ];
@@ -125,9 +126,11 @@ document.addEventListener('DOMContentLoaded', function() {
       const query = this.value.trim().toLowerCase();
       
       if (query.length >= 3) {
-        const filteredPosts = searchData.filter(post => 
-          post.title.toLowerCase().includes(query)
-        );
+        const filteredPosts = searchData.filter(post => {
+          // Search in both title and content
+          return post.title.toLowerCase().includes(query) || 
+                 post.content.includes(query);
+        });
         
         displaySearchResults(filteredPosts, query);
         searchResults.style.display = 'block';
