@@ -1513,7 +1513,7 @@ html.dark-mode .search-results mark {
 /* Sidebar Search Styles */
 .sidebar-search {
   margin-bottom: 20px;
-  margin-top: 25px;
+  margin-top: 80px;
 }
 
 .sidebar-search input {
