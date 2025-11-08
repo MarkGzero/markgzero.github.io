@@ -2,15 +2,34 @@
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search-input');
     const searchResults = document.getElementById('search-results');
+    
+    // Check if search elements exist
+    if (!searchInput || !searchResults) {
+        console.warn('Search elements not found');
+        return;
+    }
+    
     let searchData = [];
 
     // Fetch search data (posts)
     async function loadSearchData() {
         try {
             const response = await fetch('/search.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             searchData = await response.json();
         } catch (error) {
             console.warn('Search data not available:', error);
+            // Try alternative path
+            try {
+                const altResponse = await fetch('./search.json');
+                if (altResponse.ok) {
+                    searchData = await altResponse.json();
+                }
+            } catch (altError) {
+                console.warn('Alternative search path also failed:', altError);
+            }
         }
     }
 
@@ -21,12 +40,19 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        if (searchData.length === 0) {
+            searchResults.innerHTML = '<div class="search-no-results">Search data loading...</div>';
+            showSearchResults();
+            return;
+        }
+
         const results = searchData.filter(post => {
             const searchText = `${post.title} ${post.content} ${post.tags}`.toLowerCase();
             return searchText.includes(query.toLowerCase());
         }).slice(0, 5); // Limit to 5 results
 
         displaySearchResults(results, query);
+    }
     }
 
     // Display search results
@@ -72,15 +98,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Event listeners
-    searchInput.addEventListener('input', debounce(function(e) {
-        performSearch(e.target.value);
-    }, 300));
+    if (searchInput) {
+        searchInput.addEventListener('input', debounce(function(e) {
+            performSearch(e.target.value);
+        }, 300));
 
-    searchInput.addEventListener('focus', function() {
-        if (this.value.length >= 2) {
-            showSearchResults();
-        }
-    });
+        searchInput.addEventListener('focus', function() {
+            if (this.value.length >= 2) {
+                showSearchResults();
+            }
+        });
+    }
 
     // Hide results when clicking outside
     document.addEventListener('click', function(e) {

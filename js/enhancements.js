@@ -208,31 +208,3 @@ function enhanceMobileMenu() {
 
 // Initialize enhanced mobile menu
 document.addEventListener('DOMContentLoaded', enhanceMobileMenu);
-
-// Dark mode toggle utility (if needed)
-function toggleDarkMode() {
-    const html = document.documentElement;
-    const isDarkMode = html.classList.contains('dark-mode');
-    
-    if (isDarkMode) {
-        html.classList.remove('dark-mode');
-        localStorage.setItem('darkMode', 'false');
-    } else {
-        html.classList.add('dark-mode');
-        localStorage.setItem('darkMode', 'true');
-    }
-}
-
-// Load dark mode preference
-function loadDarkModePreference() {
-    const darkModePreference = localStorage.getItem('darkMode');
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    if (darkModePreference === 'true' || 
-        (darkModePreference === null && prefersDarkScheme.matches)) {
-        document.documentElement.classList.add('dark-mode');
-    }
-}
-
-// Load dark mode preference immediately
-loadDarkModePreference();

@@ -1,72 +1,31 @@
 <!-- Left Sidebar Navigation -->
 <div id="left-sidebar" class="left-sidebar">
   <div class="sidebar-header">
-    <h4><i class="fa fa-bars"></i> Quick Nav</h4>
+    <h4><i class="fa fa-archive"></i> Archive</h4>
     <button class="sidebar-close" onclick="closeSidebar()">&times;</button>
   </div>
   
   <div class="sidebar-content">
-    <!-- Recent Posts -->
-    <div class="sidebar-section">
-      <h5><i class="fa fa-clock-o"></i> Recent Posts</h5>
-      <ul class="sidebar-list">
-        {% assign recent_posts = site.posts | limit: 5 %}
-        {% for post in recent_posts %}
-          <li>
-            <a href="{{ post.url | relative_url }}" title="{{ post.title }}">
-              <span class="post-date">{{ post.date | date: "%m/%d" }}</span>
-              {{ post.title | truncate: 30 }}
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-
-    <!-- Categories/Tags -->
-    {% assign post_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
-    {% if post_tags.size > 0 %}
-    <div class="sidebar-section">
-      <h5><i class="fa fa-tags"></i> Tags</h5>
-      <div class="tag-cloud">
-        {% for tag in post_tags limit: 10 %}
-          {% unless tag == "" %}
-            {% assign tag_posts = site.posts | where_exp: "post", "post.tags contains tag" %}
-            <a href="#" class="tag-link" data-tag="{{ tag }}" title="{{ tag_posts.size }} posts">
-              {{ tag }}
-              <span class="tag-count">{{ tag_posts.size }}</span>
-            </a>
-          {% endunless %}
-        {% endfor %}
-      </div>
-    </div>
-    {% endif %}
-
-    <!-- Quick Links -->
-    <div class="sidebar-section">
-      <h5><i class="fa fa-external-link"></i> Quick Links</h5>
-      <ul class="sidebar-list">
-        <li><a href="{{ '/' | relative_url }}"><i class="fa fa-home"></i> Home</a></li>
-        <li><a href="{{ '/aboutme' | relative_url }}"><i class="fa fa-user"></i> About Me</a></li>
-        {% if site.posts.size > 0 %}
-          <li><a href="{{ site.posts.first.url | relative_url }}"><i class="fa fa-file-text"></i> Latest Post</a></li>
-        {% endif %}
-        <li><a href="#" onclick="scrollToTop()"><i class="fa fa-arrow-up"></i> Back to Top</a></li>
-      </ul>
-    </div>
-
     <!-- Archive by Month -->
     {% assign posts_by_month = site.posts | group_by_exp: "post", "post.date | date: '%Y-%m'" %}
     {% if posts_by_month.size > 0 %}
     <div class="sidebar-section">
-      <h5><i class="fa fa-archive"></i> Archive</h5>
       <ul class="sidebar-list archive-list">
-        {% for month in posts_by_month limit: 6 %}
+        {% for month in posts_by_month %}
           {% assign month_name = month.name | date: "%B %Y" %}
           <li>
             <a href="#" class="archive-link" data-month="{{ month.name }}">
               {{ month_name }}
               <span class="post-count">({{ month.items.size }})</span>
             </a>
+            <div class="month-posts" id="month-{{ month.name }}" style="display: none;">
+              {% for post in month.items %}
+                <a href="{{ post.url | relative_url }}" class="month-post-link" title="{{ post.title }}">
+                  <span class="post-date">{{ post.date | date: "%d" }}</span>
+                  {{ post.title | truncate: 35 }}
+                </a>
+              {% endfor %}
+            </div>
           </li>
         {% endfor %}
       </ul>
@@ -76,8 +35,8 @@
 </div>
 
 <!-- Sidebar Toggle Button -->
-<button id="sidebar-toggle" class="sidebar-toggle" onclick="toggleSidebar()" title="Open navigation menu">
-  <i class="fa fa-bars"></i>
+<button id="sidebar-toggle" class="sidebar-toggle" onclick="toggleSidebar()" title="Open archive menu">
+  <i class="fa fa-archive"></i>
 </button>
 
 <!-- Sidebar Overlay -->
@@ -116,27 +75,23 @@ function scrollToTop() {
   closeSidebar();
 }
 
-// Tag filtering functionality
+// Archive functionality
 document.addEventListener('DOMContentLoaded', function() {
-  const tagLinks = document.querySelectorAll('.tag-link');
-  tagLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const tag = this.dataset.tag;
-      // You can implement tag filtering here
-      console.log('Filter by tag:', tag);
-      closeSidebar();
-    });
-  });
-
   const archiveLinks = document.querySelectorAll('.archive-link');
   archiveLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
       const month = this.dataset.month;
-      // You can implement month filtering here
-      console.log('Filter by month:', month);
-      closeSidebar();
+      const monthPosts = document.getElementById('month-' + month);
+      
+      // Toggle visibility
+      if (monthPosts.style.display === 'none') {
+        monthPosts.style.display = 'block';
+        this.classList.add('expanded');
+      } else {
+        monthPosts.style.display = 'none';
+        this.classList.remove('expanded');
+      }
     });
   });
 });
