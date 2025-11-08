@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Test</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search posts..." class="search-input">
+        <button type="button" id="search-button" class="search-button">
+            <i class="fa fa-search"></i>
+        </button>
+        <div id="search-results" class="search-results" style="display: none;"></div>
+    </div>
+
+    <script src="js/search.js"></script>
+    
+    <script>
+        // Test script
+        setTimeout(() => {
+            console.log('=== SEARCH TEST ===');
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                console.log('Search input found');
+                searchInput.value = 'mpremote';
+                
+                // Trigger input event
+                const inputEvent = new Event('input', { bubbles: true });
+                searchInput.dispatchEvent(inputEvent);
+                
+                console.log('Search triggered for "mpremote"');
+            } else {
+                console.log('Search input NOT found');
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
