@@ -13,6 +13,8 @@ common-js:
   - "/js/bootstrap.min.js"
   - "/js/main.js"
   - "/js/copyCode.js"
+  - "/js/search.js"
+  - "/js/enhancements.js"
 ---
 
 <!DOCTYPE html>
@@ -23,10 +25,14 @@ common-js:
   <body>
 
     {% include gtm_body.html %}
+    
+    {% include sidebar.html %}
   
     {% include nav.html %}
 
     {{ content }}
+    
+    {% include wordcloud.html %}
 
     {% include footer.html %}
   

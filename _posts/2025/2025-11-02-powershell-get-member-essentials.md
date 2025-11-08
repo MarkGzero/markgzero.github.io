@@ -7,6 +7,8 @@ excerpt: >-
 comments: true
 ---
 
+
+
 ## 🧠 Why Get-Member Matters
 
 PowerShell sits on top of .NET, which means every object you work with has properties, methods, events, and fields. `Get-Member` is your diagnostic tool to inspect these objects and discover their capabilities without needing to read documentation.
@@ -28,8 +30,8 @@ The most important concept to understand is the difference between static and in
 
 | Usage | Shows | Example Use |
 |-------|-------|-------------|
-| `[type] \| Get-Member` | **Instance members only** | `'A'.GetType()` |
-| `[type] \| Get-Member -Static` | **Static members on the type** | `[char]::IsDigit('5')` |
+| `[type] | Get-Member` | **Instance members only** | `'A'.GetType()` |
+| `[type] | Get-Member -Static` | **Static members on the type** | `[char]::IsDigit('5')` |
 
 ### Instance Members Example
 
@@ -203,8 +205,4 @@ Mastering `Get-Member` with the `-Static` parameter opens up the full power of .
 - Static methods often provide utility functions and class-level operations
 - Both are essential for effective PowerShell scripting
 
-The next time you're working with a type in PowerShell, take a moment to explore both its instance and static members. You might discover powerful functionality you didn't know existed!
-
----
-
-*Happy scripting! 🚀*
+*Generate by GitHub Copilot; Model: Claude Sonnet 4

@@ -16,6 +16,20 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+        <!-- Dark Mode Toggle -->
+        <li>
+          <button class="btn btn-link navbar-btn dark-mode-toggle" onclick="toggleDarkMode()" title="Toggle dark mode">
+            <i class="fa fa-moon-o"></i>
+          </button>
+        </li>
+        <!-- Search Field -->
+        <li class="search-container">
+          <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search posts..." autocomplete="off">
+            <i class="fa fa-search search-icon"></i>
+            <div id="search-results" class="search-results"></div>
+          </div>
+        </li>
       {% for link in site.navbar-links %}
         {% if link[1].first %}
           <li class="navlinks-container">
