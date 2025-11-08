@@ -495,6 +495,120 @@ html.dark-mode footer .page-modified i {
   }
 }
 
+/* --- Enhanced Post Navigation --- */
+
+.post-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 0 60px 0;
+  gap: 20px;
+}
+
+.nav-previous,
+.nav-next {
+  flex: 1;
+  max-width: 48%;
+}
+
+.nav-previous {
+  text-align: left;
+}
+
+.nav-next {
+  text-align: right;
+}
+
+.nav-link {
+  display: block;
+  padding: 20px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  color: #495057;
+}
+
+.nav-link:hover {
+  background: #e9ecef;
+  border-color: #008AFF;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 138, 255, 0.15);
+}
+
+.nav-direction {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #008AFF;
+  margin-bottom: 8px;
+  font-family: var(--font-secondary);
+}
+
+.nav-previous .nav-direction {
+  justify-content: flex-start;
+}
+
+.nav-next .nav-direction {
+  justify-content: flex-end;
+}
+
+.nav-direction i {
+  margin: 0 6px;
+}
+
+.nav-title {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #495057;
+  font-family: var(--font-primary);
+}
+
+.nav-link:hover .nav-title {
+  color: #212529;
+}
+
+/* Dark mode navigation */
+html.dark-mode .nav-link {
+  background: #3a3a3a;
+  border-color: #555;
+  color: #ddd;
+}
+
+html.dark-mode .nav-link:hover {
+  background: #4a4a4a;
+  border-color: #008AFF;
+}
+
+html.dark-mode .nav-title {
+  color: #ddd;
+}
+
+html.dark-mode .nav-link:hover .nav-title {
+  color: #fff;
+}
+
+/* Mobile responsive navigation */
+@media (max-width: 767px) {
+  .post-navigation {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .nav-previous,
+  .nav-next {
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .nav-direction {
+    justify-content: center !important;
+  }
+}
+
 /* --- Tags --- */
 
 .blog-tags {
@@ -1474,10 +1588,13 @@ html.dark-mode .search-results mark {
   display: block !important;
   padding: 6px 12px !important;
   color: #777 !important;
-  font-family: var(--font-primary) !important;
+  font-family: var(--font-secondary) !important;
   font-size: 13px !important;
-  line-height: var(--line-height-base) !important;
+  line-height: 1.4 !important;
   border-bottom: 1px solid #f8f8f8;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
 }
 
 .month-post-link:hover {

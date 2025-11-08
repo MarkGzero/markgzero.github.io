@@ -52,18 +52,30 @@ layout: base
         {% include social-share.html %}
       {% endif %}
 
-      <ul class="pager blog-pager">
+      <div class="post-navigation">
         {% if page.previous.url %}
-        <li class="previous">
-          <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">&larr; Previous Post</a>
-        </li>
+        <div class="nav-previous">
+          <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" class="nav-link">
+            <div class="nav-direction">
+              <i class="fa fa-chevron-left"></i>
+              <span>Previous Post</span>
+            </div>
+            <div class="nav-title">{{ page.previous.title }}</div>
+          </a>
+        </div>
         {% endif %}
         {% if page.next.url %}
-        <li class="next">
-          <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">Next Post &rarr;</a>
-        </li>
+        <div class="nav-next">
+          <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" class="nav-link">
+            <div class="nav-direction">
+              <span>Next Post</span>
+              <i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="nav-title">{{ page.next.title }}</div>
+          </a>
+        </div>
         {% endif %}
-      </ul>
+      </div>
 
       {% if page.comments %}
         <div class="disqus-comments">

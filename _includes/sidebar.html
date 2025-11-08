@@ -22,7 +22,7 @@
               {% for post in month.items %}
                 <a href="{{ post.url | relative_url }}" class="month-post-link" title="{{ post.title }}">
                   <span class="post-date">{{ post.date | date: "%d" }}</span>
-                  {{ post.title | truncate: 35 }}
+                  {{ post.title }}
                 </a>
               {% endfor %}
             </div>
