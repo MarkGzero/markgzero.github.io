@@ -1485,6 +1485,7 @@ html.dark-mode .search-results mark {
 
 .sidebar-content {
   padding: 0;
+  padding-top: 60px;
 }
 
 .sidebar-section {
@@ -1513,7 +1514,7 @@ html.dark-mode .search-results mark {
 /* Sidebar Search Styles */
 .sidebar-search {
   margin-bottom: 20px;
-  margin-top: 80px;
+  margin-top: 0px;
 }
 
 .sidebar-search input {
