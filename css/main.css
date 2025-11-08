@@ -1442,7 +1442,7 @@ html.dark-mode .search-results mark {
   height: 100vh;
   background: #fff;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 1001;
+  z-index: 9999;
   transition: left 0.3s ease;
   overflow-y: auto;
   font-family: var(--font-secondary) !important;
