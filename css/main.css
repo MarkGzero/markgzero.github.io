@@ -1510,6 +1510,111 @@ html.dark-mode .search-results mark {
   color: #008AFF;
 }
 
+/* Sidebar Search Styles */
+.sidebar-search {
+  margin-bottom: 20px;
+}
+
+.sidebar-search input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: var(--font-secondary);
+  background: #fff;
+  transition: border-color 0.2s ease;
+}
+
+.sidebar-search input:focus {
+  outline: none;
+  border-color: #008AFF;
+  box-shadow: 0 0 0 2px rgba(0, 138, 255, 0.1);
+}
+
+.sidebar-search-results {
+  margin-top: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 4px;
+  display: none;
+}
+
+.sidebar-search-result {
+  padding: 8px 12px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-search-result:hover {
+  background: #f8f9fa;
+}
+
+.sidebar-search-result:last-child {
+  border-bottom: none;
+}
+
+.sidebar-search-result a {
+  color: #333 !important;
+  text-decoration: none !important;
+  display: block;
+  font-size: 12px;
+  line-height: 1.4;
+  font-family: var(--font-secondary);
+}
+
+.sidebar-search-result a:hover {
+  color: #008AFF !important;
+}
+
+.sidebar-search-date {
+  font-size: 10px;
+  color: #999;
+  margin-bottom: 2px;
+}
+
+.sidebar-search-no-results {
+  padding: 12px;
+  text-align: center;
+  color: #999;
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* Dark mode search styles */
+html.dark-mode .sidebar-search input {
+  background: #4a4a4a;
+  border-color: #666;
+  color: #ddd;
+}
+
+html.dark-mode .sidebar-search input:focus {
+  border-color: #008AFF;
+}
+
+html.dark-mode .sidebar-search-result {
+  background: #4a4a4a;
+  border-bottom-color: #666;
+}
+
+html.dark-mode .sidebar-search-result:hover {
+  background: #555;
+}
+
+html.dark-mode .sidebar-search-result a {
+  color: #ddd !important;
+}
+
+html.dark-mode .sidebar-search-result a:hover {
+  color: #008AFF !important;
+}
+
+html.dark-mode .sidebar-search-no-results {
+  color: #999;
+}
+
 .sidebar-list {
   list-style: none;
   padding: 0;

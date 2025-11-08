@@ -6,6 +6,15 @@
   </div>
   
   <div class="sidebar-content">
+    <!-- Quick Search Section -->
+    <div class="sidebar-section">
+      <h5><i class="fa fa-search"></i> Quick Search</h5>
+      <div class="sidebar-search">
+        <input type="text" id="sidebar-search-input" placeholder="Search posts..." autocomplete="off" />
+        <div id="sidebar-search-results" class="sidebar-search-results"></div>
+      </div>
+    </div>
+    
     <!-- Archive by Month -->
     {% assign posts_by_month = site.posts | group_by_exp: "post", "post.date | date: '%Y-%m'" %}
     {% if posts_by_month.size > 0 %}
@@ -94,6 +103,70 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+  
+  // Sidebar search functionality
+  const searchInput = document.getElementById('sidebar-search-input');
+  const searchResults = document.getElementById('sidebar-search-results');
+  
+  // Create search data from current page posts
+  const searchData = [
+    {% for post in site.posts %}
+    {
+      title: {{ post.title | jsonify }},
+      url: {{ post.url | relative_url | jsonify }},
+      date: {{ post.date | date: "%B %d, %Y" | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+  
+  if (searchInput && searchResults) {
+    searchInput.addEventListener('input', function() {
+      const query = this.value.trim().toLowerCase();
+      
+      if (query.length >= 3) {
+        const filteredPosts = searchData.filter(post => 
+          post.title.toLowerCase().includes(query)
+        );
+        
+        displaySearchResults(filteredPosts, query);
+        searchResults.style.display = 'block';
+      } else {
+        searchResults.style.display = 'none';
+      }
+    });
+    
+    // Hide results when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.sidebar-search')) {
+        searchResults.style.display = 'none';
+      }
+    });
+  }
+  
+  function displaySearchResults(posts, query) {
+    if (posts.length === 0) {
+      searchResults.innerHTML = '<div class="sidebar-search-no-results">No posts found</div>';
+      return;
+    }
+    
+    const resultsHTML = posts.slice(0, 8).map(post => `
+      <div class="sidebar-search-result">
+        <div class="sidebar-search-date">${post.date}</div>
+        <a href="${post.url}">${highlightMatch(post.title, query)}</a>
+      </div>
+    `).join('');
+    
+    searchResults.innerHTML = resultsHTML;
+  }
+  
+  function highlightMatch(text, query) {
+    const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+    return text.replace(regex, '<strong>$1</strong>');
+  }
+  
+  function escapeRegExp(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
 });
 
 // Close sidebar when pressing Escape key

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sidebar Search Test</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <style>
+        body { margin: 20px; font-family: Arial, sans-serif; }
+        .test-container { display: flex; gap: 20px; }
+        .sidebar-test { width: 250px; border: 1px solid #ddd; padding: 20px; }
+        .main-content { flex: 1; padding: 20px; background: #f9f9f9; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="sidebar-test">
+            <div class="sidebar-section">
+                <h5><i class="fa fa-search"></i> Quick Search</h5>
+                <div class="sidebar-search">
+                    <input type="text" id="sidebar-search-input" placeholder="Search posts..." autocomplete="off" />
+                    <div id="sidebar-search-results" class="sidebar-search-results"></div>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <h3>Sidebar Search Test</h3>
+            <p>Type at least 3 characters in the search box to see matching posts.</p>
+            <p>Try searching for: "mpremote", "powershell", "tcp", "registry", "footpedal"</p>
+        </div>
+    </div>
+
+    <script>
+        // Sample post data (what Jekyll will generate)
+        const searchData = [
+            {
+                title: "Getting Started with mpremote",
+                url: "/2025/08/12/getting-started-with-mpremote.html",
+                date: "August 12, 2025"
+            },
+            {
+                title: "PowerShell Get-Member Essentials",
+                url: "/2025/11/02/powershell-get-member-essentials.html",
+                date: "November 02, 2025"
+            },
+            {
+                title: "PSGadget Glyph Development",
+                url: "/2025/05/04/psgadget-glyph.html",
+                date: "May 04, 2025"
+            },
+            {
+                title: "Footpedal Interface Development",
+                url: "/2025/05/10/footpedal-interface.html",
+                date: "May 10, 2025"
+            },
+            {
+                title: "List TCP Connections with PowerShell",
+                url: "/2025/04/07/list-tcp-connections.html",
+                date: "April 07, 2025"
+            },
+            {
+                title: "Enabling PSRemoting for Remote Management",
+                url: "/2025/03/25/enabling-psremoting.html",
+                date: "March 25, 2025"
+            },
+            {
+                title: "Use WinEvent to Check Windows Updates",
+                url: "/2025/03/24/Use-WinEvent-Check-WSUpdates.html",
+                date: "March 24, 2025"
+            },
+            {
+                title: "Get Software List from Registry",
+                url: "/2025/03/24/get-software-list-from-registry.html",
+                date: "March 24, 2025"
+            },
+            {
+                title: "First Step - Blog Launch",
+                url: "/2025/03/23/first-step.html",
+                date: "March 23, 2025"
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('sidebar-search-input');
+            const searchResults = document.getElementById('sidebar-search-results');
+            
+            if (searchInput && searchResults) {
+                searchInput.addEventListener('input', function() {
+                    const query = this.value.trim().toLowerCase();
+                    
+                    if (query.length >= 3) {
+                        const filteredPosts = searchData.filter(post => 
+                            post.title.toLowerCase().includes(query)
+                        );
+                        
+                        displaySearchResults(filteredPosts, query);
+                        searchResults.style.display = 'block';
+                    } else {
+                        searchResults.style.display = 'none';
+                    }
+                });
+                
+                // Hide results when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.sidebar-search')) {
+                        searchResults.style.display = 'none';
+                    }
+                });
+            }
+            
+            function displaySearchResults(posts, query) {
+                if (posts.length === 0) {
+                    searchResults.innerHTML = '<div class="sidebar-search-no-results">No posts found</div>';
+                    return;
+                }
+                
+                const resultsHTML = posts.slice(0, 8).map(post => `
+                    <div class="sidebar-search-result">
+                        <div class="sidebar-search-date">${post.date}</div>
+                        <a href="${post.url}">${highlightMatch(post.title, query)}</a>
+                    </div>
+                `).join('');
+                
+                searchResults.innerHTML = resultsHTML;
+            }
+            
+            function highlightMatch(text, query) {
+                const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+                return text.replace(regex, '<strong>$1</strong>');
+            }
+            
+            function escapeRegExp(string) {
+                return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            }
+        });
+    </script>
+</body>
+</html>
