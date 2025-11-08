@@ -358,6 +358,20 @@ footer .theme-by {
   color: #999;
 }
 
+footer .page-modified {
+  text-align: center;
+  margin: 10px 0 0 0;
+  font-size: 11px;
+  color: #bbb;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 10px;
+}
+
+footer .page-modified i {
+  margin-right: 5px;
+  color: #008AFF;
+}
+
 @media only screen and (min-width: 768px) {
   footer {
     padding: 60px 0;
@@ -390,6 +404,15 @@ html.dark-mode footer a:hover {
 
 html.dark-mode footer .footer-links .fa-circle {
   color: #555;
+}
+
+html.dark-mode footer .page-modified {
+  color: #777;
+  border-top-color: #444;
+}
+
+html.dark-mode footer .page-modified i {
+  color: #008AFF;
 }
 
 /* --- Post preview --- */
@@ -1387,7 +1410,9 @@ html.dark-mode .search-results mark {
   color: #666;
   text-decoration: none;
   border-radius: 4px;
-  font-size: 13px;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  line-height: var(--line-height-base);
   transition: all 0.2s ease;
 }
 
@@ -1441,7 +1466,9 @@ html.dark-mode .search-results mark {
   display: block !important;
   padding: 6px 12px !important;
   color: #777 !important;
-  font-size: 12px !important;
+  font-family: var(--font-primary) !important;
+  font-size: 13px !important;
+  line-height: var(--line-height-base) !important;
   border-bottom: 1px solid #f8f8f8;
 }
 
