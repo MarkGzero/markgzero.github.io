@@ -1260,7 +1260,6 @@ html.dark-mode .code-header {
   border-left: 7px solid #58a6ff !important;
   border-top-color: #30363d !important;
 }
-}
 html.dark-mode .copy-code-button.copied svg {
   opacity: 1 !important;
 }
