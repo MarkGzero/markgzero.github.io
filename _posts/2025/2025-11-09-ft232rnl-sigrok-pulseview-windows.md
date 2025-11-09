@@ -75,8 +75,6 @@ According to the [Sigrok Windows Driver Documentation](https://sigrok.org/wiki/W
 
 > :bell: Each FT232 device operates independently, so its possible to have multiple FTDI devices connected, each requiring its own driver configuration.
 
-> :bell: Only one application can use the FTDI device at a time. Make sure to close Pulseview if using sigrok-cli or vice versa.
-
 Initially, Zadig might show `FTDIBUS (vx.xx)` as the currently installed driver for the FTDI device.
 
 <div style="text-align: center;">
@@ -90,6 +88,8 @@ After replacing the original FTDIBUS driver with WinUSB using Zadig, Zadig shoul
 </div>
 
 ## FT232RNL Successfully Recognized as Logic Analyzer device
+
+> :bell: Only one application can use the FTDI device at a time. Make sure to close Pulseview if using sigrok-cli or vice versa.
 
 After updating the driver to WinUSB and restarting Pulseview, the FTDI device is now recognized properly and ready for logic analysis.
 
