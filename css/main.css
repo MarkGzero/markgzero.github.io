@@ -894,10 +894,14 @@ pre {
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: pre-wrap;
-  padding-top: 3em !important;
+  margin-top: 0;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 }
 pre code {
   white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 pre.highlight, .highlight > pre, td.code pre {
   background: #FAFAFA;
@@ -906,6 +910,7 @@ pre.highlight, .highlight > pre, td.code pre {
   background-size: 3em 3em;
   background-position: 0px 10px;
   border-left: 7px solid #444;
+  margin-top: 0;
 }
 code table, code table td, code table th, code table tbody, code table tr,
 td.gutter pre {
@@ -929,15 +934,25 @@ td.gutter {
 /* --- Copy Code Button --- */
 
 .code-header {
-  position: relative;
-  margin-bottom: -1px;
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 0;
   z-index: 1;
+  height: 32px;
+  background: #FAFAFA;
+  background-image: linear-gradient(#F9F9F9 50%, #FDFDFD 50%);
+  background-repeat: repeat;
+  background-size: 3em 3em;
+  background-position: 0px 10px;
+  border-left: 7px solid #444;
+  border-top: 1px solid #e0e0e0;
+  padding-right: 8px;
 }
 
 .copy-code-button {
-  position: absolute;
-  top: 8px;
-  right: 8px;
+  position: static;
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid #d0d7de;
   border-radius: 6px;
