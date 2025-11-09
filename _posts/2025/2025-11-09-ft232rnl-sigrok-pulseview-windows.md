@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Using FT232RNL USB to TTL Module with Sigrok/Pulseview on Windows
+title: Using FT232RNL with Sigrok/Pulseview on Windows
 subtitle: Getting FTDI logic analyzer working with proper drivers
 date: 2025-11-09
 tags: [FTDI, Logic Analyzer, Sigrok, Pulseview, Windows, Hardware, USB]
 ---
 
-# Using FT232RNL USB to TTL Module with Sigrok/Pulseview on Windows
+# Using FT232RNL with Sigrok/Pulseview on Windows
 
 ## Features at a Glance
 
