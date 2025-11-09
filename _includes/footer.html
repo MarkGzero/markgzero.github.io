@@ -224,26 +224,36 @@
     
     <!-- Page last modified date -->
     <p class="page-modified text-muted">
-      <small><i class="fa fa-clock-o"></i> Page updated: <span id="page-updated-time">{{ site.time | date: "%B %d, %Y at %I:%M %p EST" }}</span></small>
+      <small><i class="fa fa-clock-o"></i> Page updated: <span id="page-updated-time">{{ site.time | date: "%B %d, %Y at %H:%M UTC" }}</span></small>
     </p>
     
     <script>
     document.addEventListener('DOMContentLoaded', function() {
       const utcTime = new Date('{{ site.time | date: "%Y-%m-%dT%H:%M:%SZ" }}');
+      
+      // Format UTC time in 24-hour format
+      const utcHours = String(utcTime.getUTCHours()).padStart(2, '0');
+      const utcMinutes = String(utcTime.getUTCMinutes()).padStart(2, '0');
+      const dateStr = utcTime.toLocaleString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
+      
+      // Calculate offsets for other timezones
       const estTime = new Date(utcTime.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+      const cstTime = new Date(utcTime.toLocaleString('en-US', { timeZone: 'America/Chicago' }));
+      const pstTime = new Date(utcTime.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
       
-      const options = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: '2-digit',
-        hour12: true,
-        timeZone: 'America/New_York'
-      };
+      const estHours = String(estTime.getHours()).padStart(2, '0');
+      const estMinutes = String(estTime.getMinutes()).padStart(2, '0');
+      const cstHours = String(cstTime.getHours()).padStart(2, '0');
+      const cstMinutes = String(cstTime.getMinutes()).padStart(2, '0');
+      const pstHours = String(pstTime.getHours()).padStart(2, '0');
+      const pstMinutes = String(pstTime.getMinutes()).padStart(2, '0');
       
-      const formattedTime = estTime.toLocaleString('en-US', options);
-      document.getElementById('page-updated-time').textContent = formattedTime + ' EST';
+      const formattedTime = `${dateStr} at UTC ${utcHours}:${utcMinutes} (EST ${estHours}:${estMinutes} | CST ${cstHours}:${cstMinutes} | PST ${pstHours}:${pstMinutes})`;
+      document.getElementById('page-updated-time').textContent = formattedTime;
     });
     </script>
       </div>
