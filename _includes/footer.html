@@ -224,8 +224,28 @@
     
     <!-- Page last modified date -->
     <p class="page-modified text-muted">
-      <small><i class="fa fa-clock-o"></i> Page updated: {{ site.time | date: "%B %d, %Y at %I:%M %p" }} UTC</small>
+      <small><i class="fa fa-clock-o"></i> Page updated: <span id="page-updated-time"></span>{{ site.time | date: "%B %d, %Y at %I:%M %p" }} EST</span></small>
     </p>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const utcTime = new Date('{{ site.time | date: "%Y-%m-%dT%H:%M:%SZ" }}');
+      const estTime = new Date(utcTime.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+      
+      const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true,
+        timeZone: 'America/New_York'
+      };
+      
+      const formattedTime = estTime.toLocaleString('en-US', options);
+      document.getElementById('page-updated-time').textContent = formattedTime + ' EST';
+    });
+    </script>
       </div>
     </div>
   </div>
