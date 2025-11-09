@@ -22,17 +22,17 @@ https://www.waveshare.com/wiki/USB-TO-TTL-FT232
 - USB Type-C port - Smooth plug & pull, solid and reliable
 
 <div style="text-align: center;">
-  <img src="../../images/ft232rnl/image-7.png" alt="FT232RNL USB to TTL Module" style="max-width: 600px; margin: 20px auto; display: block;">
+  <img src="/markgzero.github.io/images/ft232rnl/image-7.png" alt="FT232RNL USB to TTL Module" style="max-width: 600px; margin: 20px auto; display: block;">
 </div>
 
 <div style="text-align: center;">
-  <img src="../../images/ft232rnl/image-8.png" alt="FT232RNL Top View" style="max-width: 600px; margin: 20px auto; display: block;">
+  <img src="/markgzero.github.io/images/ft232rnl/image-8.png" alt="FT232RNL Top View" style="max-width: 600px; margin: 20px auto; display: block;">
 </div>
 
 *IC chip closeup, taken with iPhone macro lens*
 
 <div style="text-align: center;">
-  <img src="../../images/ft232rnl/image-9.png" alt="FT232RNL IC Chip Closeup" style="max-width: 600px; margin: 20px auto; display: block;">
+  <img src="/markgzero.github.io/images/ft232rnl/image-9.png" alt="FT232RNL IC Chip Closeup" style="max-width: 600px; margin: 20px auto; display: block;">
 </div>
 
 ## The Challenge: Driver Issues on Windows
@@ -50,11 +50,11 @@ sr: ftdi-la: Failed to get the FTDI strings: -4
 This indicates that Pulseview can't properly communicate with the FTDI device using the current driver.
 
 <div style="text-align: center;">
-  <img src="../../images/ft232rnl/image-2.png" alt="Pulseview Error Log" style="max-width: 600px; margin: 20px auto; display: block;">
+  <img src="/markgzero.github.io/images/ft232rnl/image-2.png" alt="Pulseview Error Log" style="max-width: 600px; margin: 20px auto; display: block;">
 </div>
 
 <div style="text-align: center;">
-  <img src="../../images/ft232rnl/image.png" alt="Pulseview Device Not Recognized" style="max-width: 600px; margin: 20px auto; display: block;">
+  <img src="/markgzero.github.io/images/ft232rnl/image.png" alt="Pulseview Device Not Recognized" style="max-width: 600px; margin: 20px auto; display: block;">
 </div>
 
 ### The Solution: Installing WinUSB Driver
@@ -80,13 +80,13 @@ According to the [Sigrok Windows Driver Documentation](https://sigrok.org/wiki/W
 Initially, Zadig might show `FTDIBUS (vx.xx)` as the currently installed driver for the FTDI device.
 
 <div style="text-align: center;">
-  <img src="../../images/ft232rnl/ft232r_ftdibus_driver.png" alt="Original FTDIBUS driver" style="max-width: 600px; margin: 20px auto; display: block;">
+  <img src="/markgzero.github.io/images/ft232rnl/ft232r_ftdibus_driver.png" alt="Original FTDIBUS driver" style="max-width: 600px; margin: 20px auto; display: block;">
 </div>
 
 After replacing the original FTDIBUS driver with WinUSB using Zadig, Zadig should show that WinUSB is now the installed driver for the FTDI device.
 
 <div style="text-align: center;">
-  <img src="../../images/ft232rnl/image-1.png" alt="Installing WinUSB Driver with Zadig" style="max-width: 600px; margin: 20px auto; display: block;">
+  <img src="/markgzero.github.io/images/ft232rnl/image-1.png" alt="Installing WinUSB Driver with Zadig" style="max-width: 600px; margin: 20px auto; display: block;">
 </div>
 
 ## FT232RNL Successfully Recognized as Logic Analyzer device
@@ -94,7 +94,7 @@ After replacing the original FTDIBUS driver with WinUSB using Zadig, Zadig shoul
 After updating the driver to WinUSB and restarting Pulseview, the FTDI device is now recognized properly and ready for logic analysis.
 
 <div style="text-align: center;">
-  <img src="../../images/ft232rnl/image-4.png" alt="FTDI Device Recognized Successfully" style="max-width: 600px; margin: 20px auto; display: block;">
+  <img src="/markgzero.github.io/images/ft232rnl/image-4.png" alt="FTDI Device Recognized Successfully" style="max-width: 600px; margin: 20px auto; display: block;">
 </div>
 
 Also verified via sigrok-cli, specifying driver `ftdi-la`.
@@ -110,7 +110,7 @@ or for more verbose logging
 ```
 
 <div style="text-align: center;">
-  <img src="../../images/ft232rnl/sigrok_cli.png" alt="FTDI Device Recognized Successfully" style="max-width: 600px; margin: 20px auto; display: block;">
+  <img src="/markgzero.github.io/images/ft232rnl/sigrok_cli.png" alt="FTDI Device Recognized Successfully" style="max-width: 600px; margin: 20px auto; display: block;">
 </div>
 
 
