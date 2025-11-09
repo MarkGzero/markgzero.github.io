@@ -1254,6 +1254,13 @@ html.dark-mode .copy-code-button.copied {
 html.dark-mode .copy-code-button svg {
   opacity: 0.9 !important;
 }
+html.dark-mode .code-header {
+  background: #0d1117 !important;
+  background-image: linear-gradient(#161b22 50%, #0d1117 50%) !important;
+  border-left: 7px solid #58a6ff !important;
+  border-top-color: #30363d !important;
+}
+}
 html.dark-mode .copy-code-button.copied svg {
   opacity: 1 !important;
 }
