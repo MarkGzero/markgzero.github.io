@@ -44,6 +44,7 @@ Copy and paste to a PowerShell console to run the GUI.
 
 {% include codeHeader.html %}
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```powershell
 [xml]$xaml = @"
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"

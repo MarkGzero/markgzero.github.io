@@ -36,6 +36,7 @@ The most important concept to understand is the difference between static and in
 ### Instance Members Example
 
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```powershell
 # See what you can do with a string object
 "Hello World" | Get-Member
@@ -49,6 +50,7 @@ The most important concept to understand is the difference between static and in
 
 ### Static Members Example
 
+{% include codeHeader.html %}
 {% include codeHeader.html %}
 ```powershell
 # See what you can do with the String type itself
@@ -66,6 +68,7 @@ The most important concept to understand is the difference between static and in
 ### Working with Character Types
 
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```powershell
 # Instance members - what you can do with a char object
 [char]'A' | Get-Member
@@ -82,6 +85,7 @@ The most important concept to understand is the difference between static and in
 ### Math Operations
 
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```powershell
 # Static members are essential for Math operations
 [Math] | Get-Member -Static
@@ -94,6 +98,7 @@ The most important concept to understand is the difference between static and in
 
 ### Type Conversions
 
+{% include codeHeader.html %}
 {% include codeHeader.html %}
 ```powershell
 # Convert class has many static conversion methods
@@ -127,6 +132,7 @@ Static methods are essential for:
 
 ### Explore Both at Once
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```powershell
 # Create a helper function to see both static and instance members
 function Get-AllMembers {
@@ -145,6 +151,7 @@ Get-AllMembers [string]
 
 ### Filter by Member Type
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```powershell
 # Only show methods
 [string] | Get-Member -MemberType Method
@@ -158,6 +165,7 @@ Get-AllMembers [string]
 
 ### Search for Specific Members
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```powershell
 # Find members with specific names
 [string] | Get-Member *Format*
@@ -167,6 +175,7 @@ Get-AllMembers [string]
 ## 🎪 Common Use Cases
 
 ### File Operations
+{% include codeHeader.html %}
 {% include codeHeader.html %}
 ```powershell
 # File class static methods
@@ -180,6 +189,7 @@ Get-AllMembers [string]
 ```
 
 ### DateTime Manipulation
+{% include codeHeader.html %}
 {% include codeHeader.html %}
 ```powershell
 # DateTime static methods
@@ -195,6 +205,7 @@ Get-AllMembers [string]
 ```
 
 ### Path Operations
+{% include codeHeader.html %}
 {% include codeHeader.html %}
 ```powershell
 # Path class for file system operations

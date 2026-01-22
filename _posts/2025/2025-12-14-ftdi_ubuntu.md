@@ -19,11 +19,13 @@ I'm using Ubuntu and these are a few commands I found useful for checking FTDI d
 Ubuntu should already have the `ftdi_sio` and `usbserial` modules available.
 
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```bash
 lsmod | grep ftdi
 ```
 
 Example output: 
+{% include codeHeader.html %}
 {% include codeHeader.html %}
 ```bash
 ftdi_sio               69632  0
@@ -39,12 +41,14 @@ monitor system messages to see how the kernel recognizes device connections and 
 the `-w` flag allows you to watch the log in real-time.
 
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```bash
 sudo dmesg -w
 ```
 
 Example log output when plugging in an FTDI USB-to-Serial adapter:
 
+{% include codeHeader.html %}
 {% include codeHeader.html %}
 ```bash
 [ 4632.035366] usb 1-3: New USB device found, idVendor=0403, idProduct=6001, bcdDevice= 6.00
@@ -64,12 +68,14 @@ Once the FTDI device is connected, you can verify that it has been recognized.
 `lsusb` = List USB devices
 
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```bash
 lsusb
 ```
 
 If successfully detected, you should see a new device like `/dev/ttyUSB0` created.
 
+{% include codeHeader.html %}
 {% include codeHeader.html %}
 ```bash
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub

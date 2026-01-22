@@ -33,6 +33,7 @@ On Ubuntu and Debian-based systems, you can install `mpremote` using the package
 
 {% include codeHeader.html %}
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```bash
 # Search for mpremote package in apt
 sudo apt search mpremote
@@ -56,6 +57,7 @@ If you’re using another operating system, you can also install `mpremote` via 
 
 {% include codeHeader.html %}
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```bash
 pip install mpremote
 ```
@@ -64,6 +66,7 @@ pip install mpremote
 
 Once installed, you can use the `mpremote` command to interact with your MicroPython device. Here’s how to get help and list available devices:
 
+{% include codeHeader.html %}
 {% include codeHeader.html %}
 {% include codeHeader.html %}
 ```bash
@@ -105,6 +108,7 @@ To list available USB devices and MicroPython boards:
 
 {% include codeHeader.html %}
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```bash
 lsusb
 mpremote connect list
@@ -136,6 +140,7 @@ To connect to your MicroPython board, use the appropriate shortcut or device pat
 
 {% include codeHeader.html %}
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```bash
 mpremote a0
 ```
@@ -155,6 +160,7 @@ Once connected, you can run Python commands directly in the REPL. To check your 
 
 {% include codeHeader.html %}
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```python
 import sys
 print(sys.implementation)
@@ -170,6 +176,7 @@ You can use `mpremote` to manage files on your MicroPython board. For example, t
 
 {% include codeHeader.html %}
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```bash
 mpremote fs mv oldname.py newname.py
 ```
@@ -178,6 +185,7 @@ This renames `oldname.py` to `newname.py` on the board's filesystem.
 
 To reset the board (soft reset):
 
+{% include codeHeader.html %}
 {% include codeHeader.html %}
 {% include codeHeader.html %}
 ```bash

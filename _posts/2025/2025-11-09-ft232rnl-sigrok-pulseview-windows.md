@@ -101,12 +101,14 @@ Also verified via sigrok-cli, specifying driver `ftdi-la`.
 
 {% include codeHeader.html %}
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```powershell
 & 'C:\Program Files\sigrok\sigrok-cli\sigrok-cli.exe' --driver ftdi-la --scan
 ```
 
 or for more verbose logging
 
+{% include codeHeader.html %}
 {% include codeHeader.html %}
 {% include codeHeader.html %}
 ```powershell

@@ -15,6 +15,7 @@ I'm going back 30 days and filtering for events with "installation" in the event
 
 {% include codeHeader.html %}
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```powershell
 get-winevent -FilterHashtable @{
 Providername="Microsoft-Windows-WindowsUpdateClient"
@@ -32,6 +33,7 @@ ft -auto -wrap
 
 I asked an AI assistant to rewrite my code according to recommended syntax/formatting: 
 
+{% include codeHeader.html %}
 {% include codeHeader.html %}
 {% include codeHeader.html %}
 ```powershell

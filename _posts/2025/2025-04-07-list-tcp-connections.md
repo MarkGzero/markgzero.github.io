@@ -21,6 +21,7 @@ Run this from an elevated PowerShell console:
 
 {% include codeHeader.html %}
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```powershell 
 Invoke-Command -ComputerName "SERVER01" {
   (Get-NetTCPConnection -OwningProcess (Get-Process "sqlservr").ID |

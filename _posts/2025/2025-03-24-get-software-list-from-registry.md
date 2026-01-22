@@ -9,12 +9,14 @@ comments: true
 
 {% include codeHeader.html %}
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```powershell
 Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion, InstallDate, Publisher
 ```
 
 Here's how I generally use it; assigning output to a variable for later use, then sorting by descending install date:
 
+{% include codeHeader.html %}
 {% include codeHeader.html %}
 {% include codeHeader.html %}
 ```powershell
