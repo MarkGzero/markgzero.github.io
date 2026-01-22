@@ -449,8 +449,9 @@
                     1. Fill in the post details below<br>
                     2. Write your content in markdown<br>
                     3. Upload images (they'll be copied to images folder)<br>
-                    4. Click "Generate Post" to download the markdown file<br>
-                    5. Save images to the appropriate folder and commit to GitHub
+                    4. Code headers are automatically added to code blocks<br>
+                    5. Click "Download Package" to get your complete post<br>
+                    6. Extract and commit to GitHub
                 </div>
 
                 <div class="form-group">
@@ -655,6 +656,13 @@
             return div.innerHTML;
         }
 
+        function addCodeHeaders(content) {
+            // Add {% include codeHeader.html %} before all code fences
+            // Pattern: start of line or newline, followed by ```language
+            const pattern = /(^|\n)(```\w+)/g;
+            return content.replace(pattern, '$1{% include codeHeader.html %}\n$2');
+        }
+
         function generatePost() {
             const title = document.getElementById('title').value;
             const date = document.getElementById('date').value;
@@ -706,8 +714,9 @@
             frontmatter += `comments: ${comments}\n`;
             frontmatter += '---\n\n';
 
-            // Combine frontmatter and content
-            const fullContent = frontmatter + content;
+            // Combine frontmatter and content (with code headers added)
+            const processedContent = addCodeHeaders(content);
+            const fullContent = frontmatter + processedContent;
 
             // Generate filename
             const slug = slugify(title);
@@ -795,7 +804,8 @@
             frontmatter += `comments: ${comments}\n`;
             frontmatter += '---\n\n';
 
-            const fullContent = frontmatter + content;
+            const processedContent = addCodeHeaders(content);
+            const fullContent = frontmatter + processedContent;
 
             // Add markdown file to ZIP with proper folder structure
             zip.file(`_posts/${year}/${filename}`, fullContent);

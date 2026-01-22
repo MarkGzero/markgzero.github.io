@@ -8,12 +8,14 @@ comments: true
 [Marc Carter wrote a script in 2013](https://devblogs.microsoft.com/scripting/use-powershell-to-find-installed-software/) that I still reference and use today. It's one of the key blog posts that convinced me to learn PowerShell. 
 
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```powershell
 Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion, InstallDate, Publisher
 ```
 
 Here's how I generally use it; assigning output to a variable for later use, then sorting by descending install date:
 
+{% include codeHeader.html %}
 {% include codeHeader.html %}
 ```powershell
 $apps = Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion, InstallDate, Publisher

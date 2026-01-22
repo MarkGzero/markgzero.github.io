@@ -14,6 +14,7 @@ Below is an example script, using `Get-WinEvent`. I prefer using a hashtable for
 I'm going back 30 days and filtering for events with "installation" in the event message while filtering out any events for KB2267602 in this case, which are usually just security definition updates and add unnecessary noise to the results. 
 
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```powershell
 get-winevent -FilterHashtable @{
 Providername="Microsoft-Windows-WindowsUpdateClient"
@@ -31,6 +32,7 @@ ft -auto -wrap
 
 I asked an AI assistant to rewrite my code according to recommended syntax/formatting: 
 
+{% include codeHeader.html %}
 {% include codeHeader.html %}
 ```powershell
 # Define the start time for event log retrieval (30 days ago)

@@ -32,6 +32,7 @@ If you’re working with MicroPython on microcontrollers, you’ll often need a 
 On Ubuntu and Debian-based systems, you can install `mpremote` using the package manager. Here’s how you can search for and install it:
 
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```bash
 # Search for mpremote package in apt
 sudo apt search mpremote
@@ -54,6 +55,7 @@ sudo apt install micropython-mpremote
 If you’re using another operating system, you can also install `mpremote` via `pip`:
 
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```bash
 pip install mpremote
 ```
@@ -62,6 +64,7 @@ pip install mpremote
 
 Once installed, you can use the `mpremote` command to interact with your MicroPython device. Here’s how to get help and list available devices:
 
+{% include codeHeader.html %}
 {% include codeHeader.html %}
 ```bash
 # Show help and available commands
@@ -101,6 +104,7 @@ To list available USB devices and MicroPython boards:
 > **Note:** `lsusb` is a built-in Ubuntu/Linux command for listing all USB devices. It is not part of mpremote, but is useful for confirming your board is connected.
 
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```bash
 lsusb
 mpremote connect list
@@ -131,6 +135,7 @@ Example `mpremote connect list` output:
 To connect to your MicroPython board, use the appropriate shortcut or device path. For example, to connect to `/dev/ttyACM0` (often the default for many boards):
 
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```bash
 mpremote a0
 ```
@@ -149,6 +154,7 @@ Use Ctrl-] to exit this shell
 Once connected, you can run Python commands directly in the REPL. To check your MicroPython version, enter:
 
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```python
 import sys
 print(sys.implementation)
@@ -163,6 +169,7 @@ This will display the MicroPython version and build info for your board.
 You can use `mpremote` to manage files on your MicroPython board. For example, to rename a file on the device:
 
 {% include codeHeader.html %}
+{% include codeHeader.html %}
 ```bash
 mpremote fs mv oldname.py newname.py
 ```
@@ -171,6 +178,7 @@ This renames `oldname.py` to `newname.py` on the board's filesystem.
 
 To reset the board (soft reset):
 
+{% include codeHeader.html %}
 {% include codeHeader.html %}
 ```bash
 mpremote soft-reset

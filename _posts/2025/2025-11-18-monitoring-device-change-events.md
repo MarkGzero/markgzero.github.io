@@ -8,8 +8,8 @@ tags: [powerShell, WMI, Device Monitoring, USB, HID]
 author: Mark Go
 ---
 
-
-
+{% include codeHeader.html %}
+{% include codeHeader.html %}
 ```powershell
 function Start-WMIDeviceChangeMonitor {
     [CmdletBinding()]
