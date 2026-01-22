@@ -1,4 +1,4 @@
-<div class="code-header">
+<div class="code-header" data-language="code">
   <button class="copy-code-button" aria-label="Copy code to clipboard" title="Copy code">
     <svg width="16" height="16" fill="currentColor" aria-hidden="true" focusable="false" viewBox="0 0 16 16">
       <path d="M10 1.5A1.5 1.5 0 0 1 11.5 3v1H13a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-1.5H4A1.5 1.5 0 0 1 2.5 9V3A1.5 1.5 0 0 1 4 1.5h6zm1.5 3V3A.5.5 0 0 0 11 2.5H4A.5.5 0 0 0 3.5 3v6A.5.5 0 0 0 4 9.5h.5V6a2 2 0 0 1 2-2h5z"/>
@@ -6,3 +6,28 @@
     <span class="copy-label">Copy</span>
   </button>
 </div>
+<script>
+  // Auto-detect language from next code block
+  (function() {
+    var headers = document.querySelectorAll('.code-header[data-language="code"]');
+    headers.forEach(function(header) {
+      var codeBlock = header.nextElementSibling;
+      if (codeBlock && codeBlock.classList.contains('highlighter-rouge')) {
+        var pre = codeBlock.querySelector('pre');
+        if (pre) {
+          var code = pre.querySelector('code');
+          if (code) {
+            var classes = code.className.split(' ');
+            for (var i = 0; i < classes.length; i++) {
+              if (classes[i].startsWith('language-')) {
+                var lang = classes[i].replace('language-', '');
+                header.setAttribute('data-language', lang);
+                break;
+              }
+            }
+          }
+        }
+      }
+    });
+  })();
+</script>
