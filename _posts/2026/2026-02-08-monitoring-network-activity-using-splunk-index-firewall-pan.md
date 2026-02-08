@@ -25,11 +25,11 @@ OR
 dest_ip IN (192.168.4.115,192.168.4.120,192.168.4.130)
 | eval src_dest = src_ip." → ".dest_ip
 | foreach dest_zone dest_interface dest_port protocol rule [
-    eval <<FIELD>> = coalesce(<<FIELD>>, "NULL")
-]
+ eval <<FIELD>> = coalesce(<<FIELD>>, "NULL")
+ ]
 | eval port_class = if(dest_port >= 49152, "ephemeral", "well_known")
 | stats count AS count
-        BY src_dest, dest_zone, dest_interface, dest_port, port_class, protocol, rule
+  BY src_dest, dest_zone, dest_interface, dest_port, port_class, protocol, rule
 | rename dest_port AS port
 | sort - count
 ```
