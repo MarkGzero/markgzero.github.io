@@ -2,20 +2,18 @@
 layout: post
 title: "Parse PowerShell Errors Without IDE/Linter"
 date: 2026-02-24
-subtitle: "Had no idea, but of course PowerShell includes a error parser."
+subtitle: "But of course PowerShell has a built-in error parser."
 tags: [powershell]
 comments: true
 ---
 
-Got it — trimmed down, minimal, direct.
+I've heard about AST in the PowerShell context before, particularly during this episode of PowerShell Podcast: [Holiday Special with Andrew Pla and Gilbert Sanchez: PSScriptAnalyzer, AST, and PowerShell Gifts: PS Podcast E150](https://www.pdq.com/resources/the-powershell-podcast/ep-150-holiday-special-gilbert-sanchez-psscript-analyzer-ast-powershell-gifts/)
 
----
+But I admit, I was mostly just jamming along with the episode, vibing with the conversation, and not really absorbing or understanding the details. 
 
-## Quick Find: Parse Errors Without Running the Script
+Today, I was messing around with an LLM and I noticed that it would self-check its own code for syntax errors, and I was like, "Wait, how does it do that?" Thankfully, the LLM shows its work, and I was able to see that it was using the built-in PowerShell parser to check for syntax errors without needing an IDE or linter.
 
-Was messing around with an LLM. Found something useful.
-
-Instead of running a script to see if it breaks, just ask PowerShell to parse it.
+It looked something like this:
 
 {% include codeHeader.html %}
 ```powershell
@@ -41,14 +39,6 @@ foreach ($f in $files) {
 Write-Host "$errs file(s) with parse errors"
 ```
 
-Uses the built-in parser. No execution. No side effects. Just syntax.
+So, it seems that PowerShell has a built-in way to parse scripts and check for syntax errors without needing an IDE or linter. This is pretty cool, and it means that we can quickly check our scripts for syntax errors without needing to open them in an editor or finding out about errors only when we test-run the script.
 
-Good for:
-
-* Pre-commit checks
-* CI lint pass
-* Bulk script validation
-
-Fast. Native. Works in 5.1 and 7+.
-
-Keeping this one.
+Of course, purpose-built tools like VSCode with the PowerShell extension or PSScriptAnalyzer will provide more detailed feedback and best practices, but it's good to know that we have this built-in option for quick and dirty syntax checks.
