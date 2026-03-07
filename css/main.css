@@ -1457,6 +1457,29 @@ html.dark-mode .search-results mark {
 }
 
 /* --- Left Sidebar Navigation --- */
+
+/* Remove border/outline from hamburger toggle and force right-align */
+.navbar-custom .navbar-toggle {
+  float: right;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  outline: none;
+  margin-top: 8px;
+  margin-right: 5px;
+}
+.navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus,
+.navbar-custom .navbar-toggle:active {
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+}
+.navbar-custom .navbar-toggle .icon-bar {
+  background-color: #404040;
+}
+
 .sidebar-toggle {
   position: fixed;
   top: 50%;
