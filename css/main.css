@@ -287,6 +287,51 @@ img {
   }
 }
 
+/* Force navbar to always render as a single horizontal row on all screen sizes */
+.navbar-custom .container-fluid {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+}
+.navbar-custom .navbar-header {
+  float: none;
+  white-space: nowrap;
+}
+.navbar-custom .navbar-collapse {
+  display: -webkit-flex !important;
+  display: flex !important;
+  -webkit-flex: 1;
+  flex: 1;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.navbar-custom .navbar-collapse .navbar-nav {
+  float: none;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin: 0;
+}
+@media only screen and (max-width: 767px) {
+  .navbar-custom .navbar-brand {
+    font-size: 14px;
+    padding: 10px 8px;
+  }
+  .navbar-custom .nav li a {
+    padding: 10px 8px;
+    font-size: 11px;
+    letter-spacing: 0;
+  }
+}
+
 /* --- Footer --- */
 
 footer {
