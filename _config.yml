@@ -17,7 +17,7 @@ baseurl: ""
 title: Mark Go
 
 # Short description of your site
-description: Mark Go blog
+description: Mark Go
 
 # --- Navigation bar options --- #
 
@@ -58,7 +58,7 @@ avatar: "/img/avatar.jpg"
 # Important: you must keep the "name" parameter, everything else you can remove
 author:
   name: Mark Go
-  email: "markgoatwork@gmail.com"
+  email: "officialmarkgo@gmail.com"
   github: markgzero
   twitter: 
   linkedin: mark-go-0439791b7
@@ -71,7 +71,7 @@ footer-links-active:
   rss: true
   facebook: false
   email: true
-  twitter: true
+  twitter: false
   github: true
   linkedin: true
   xing: false
@@ -80,7 +80,7 @@ footer-links-active:
 
 # Select which share links to show in posts
 share-links-active:
-  twitter: true
+  twitter: false
   facebook: false
   google: false
   linkedin: true
@@ -113,7 +113,7 @@ title-separator: "-"
 # --- Don't need to touch anything below here (but you can if you want) --- #
 
 # Output options (more information on Jekyll's site)
-timezone: "Europe/Berlin"
+timezone: "EST"
 markdown: kramdown
 highlighter: rouge
 #permalink: /:year/:month/:day/:title/.html
