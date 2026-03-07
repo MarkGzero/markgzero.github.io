@@ -311,7 +311,7 @@ img {
   -webkit-box-shadow: none;
 }
 .navbar-custom .navbar-collapse .navbar-nav {
-  float: none;
+  float: none !important;
   display: -webkit-flex;
   display: flex;
   -webkit-align-items: center;
@@ -319,6 +319,11 @@ img {
   -webkit-flex-wrap: nowrap;
   flex-wrap: nowrap;
   margin: 0;
+}
+.navbar-custom .navbar-collapse .navbar-right {
+  float: none !important;
+  margin-left: auto;
+  margin-right: 0;
 }
 @media only screen and (max-width: 767px) {
   .navbar-custom .navbar-brand {
