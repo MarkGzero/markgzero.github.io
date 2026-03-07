@@ -21,6 +21,8 @@ var main = {
     });
     $('#main-navbar').on('hidden.bs.collapse', function () {
       $(".navbar").removeClass("top-nav-expanded");
+      // Force avatar back to visible in case it got stuck
+      $(".avatar-container").css("display", "");
     });
 	
     // On mobile, when clicking on a multi-level navbar menu, show the child links
