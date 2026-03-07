@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
     searchInput.addEventListener('input', function() {
       const query = this.value.trim().toLowerCase();
       
-      if (query.length >= 3) {
+      if (query.length >= 2) {
         const filteredPosts = searchData.filter(post => {
           // Search in both title and content
           return post.title.toLowerCase().includes(query) || 
