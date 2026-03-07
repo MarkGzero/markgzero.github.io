@@ -1,15 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <button type="button" class="navbar-toggle" onclick="toggleSidebar()" title="Search &amp; Archive" style="padding: 9px 12px;">
-        <i class="fa fa-search"></i>
-      </button>
       {% if site.title-img %}
         <a class="navbar-brand navbar-brand-logo" href="{{ site.url }}/aboutme"><img src="{{ site.title-img }}"/></a>
       {% else %}
@@ -17,7 +8,7 @@
       {% endif %}
     </div>
 
-    <div class="collapse navbar-collapse" id="main-navbar">
+    <div class="navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
         <li>
           <a href="javascript:void(0)" onclick="toggleSidebar()" title="Search &amp; Archive">
