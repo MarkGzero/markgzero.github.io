@@ -138,6 +138,16 @@
             box-shadow: 0 5px 20px rgba(67, 181, 129, 0.6);
         }
 
+        .button.folder {
+            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+            border: 1px solid #b94600;
+        }
+
+        .button.folder:hover {
+            background: linear-gradient(135deg, #f0932b 0%, #e55c00 100%);
+            box-shadow: 0 5px 20px rgba(230, 126, 34, 0.6);
+        }
+
         .image-upload-section {
             background: #2d2d30;
             border: 2px dashed #555;
@@ -413,14 +423,35 @@
             margin-bottom: 5px;
         }
 
-        .tag-input-container {
+        .tag-pills {
             display: flex;
-            gap: 10px;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 4px;
         }
 
-        .tag-input-container input {
-            flex: 1;
+        .tag-pills .pill {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            background: #2d2d30;
+            color: #a0a0a0;
+            border: 1px solid #555;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s;
+        }
+
+        .tag-pills .pill input[type="checkbox"] {
+            display: none;
+        }
+
+        .tag-pills .pill:has(input:checked) {
+            background: #667eea;
+            color: #fff;
+            border-color: #5568e0;
         }
 
         @media (max-width: 1024px) {
@@ -450,8 +481,9 @@
                     2. Write your content in markdown<br>
                     3. Upload images (they'll be copied to images folder)<br>
                     4. Code headers are automatically added to code blocks<br>
-                    5. Click "Download Package" to get your complete post<br>
-                    6. Extract and commit to GitHub
+                    5. Click <strong>💾 Save to Blog Folder</strong> to write files directly to your local blog directory<br>
+                    &nbsp;&nbsp;&nbsp;— or — Click <strong>📦 Download Package</strong> to get a ZIP<br>
+                    6. Commit to GitHub
                 </div>
 
                 <div class="form-group">
@@ -470,11 +502,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="excerpt">Excerpt (optional)</label>
-                    <textarea id="excerpt" placeholder="Sentence that serves as preview for the post" style="min-height: 80px;"></textarea>
-                </div>
-
-                <div class="form-group">
                     <label>
                         <input type="checkbox" id="comments" checked style="width: auto; margin-right: 8px;">
                         Enable Comments
@@ -482,15 +509,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="tags">Tags (comma-separated)</label>
-                    <div class="tag-input-container">
-                        <input type="text" id="tags" placeholder="powershell, windows, automation">
-                    </div>
+                    <label>Tags</label>
+                    <div class="tag-pills" id="tagPills"></div>
+                    <input type="text" id="customTag" placeholder="+ custom tag, press Enter" style="margin-top: 8px;">
                 </div>
 
                 <div class="form-group">
-                    <label for="categories">Categories (comma-separated)</label>
-                    <input type="text" id="categories" placeholder="tutorial, tips">
+                    <label>Categories</label>
+                    <div class="tag-pills" id="categoryPills"></div>
                 </div>
 
                 <div class="form-group">
@@ -521,8 +547,9 @@
         </div>
 
         <div class="actions">
+            <button class="button folder" onclick="saveToFolder()">💾 Save to Blog Folder</button>
             <button class="button" onclick="downloadPackage()">📦 Download Package (ZIP)</button>
-            <button class="button" onclick="generatePost()">💾 Generate Post Only</button>
+            <button class="button" onclick="generatePost()">📄 Generate Post Only</button>
             <button class="button secondary" onclick="clearForm()">🗑️ Clear Form</button>
         </div>
     </div>
@@ -535,6 +562,56 @@
 
         // Set today's date as default
         document.getElementById('date').valueAsDate = new Date();
+
+        // Known tags and categories from existing posts
+        const KNOWN_TAGS = [
+            'powershell', 'Windows', 'USB', 'Hardware', 'FTDI', 'ubuntu', 'linux',
+            'WMI', 'HID', 'splunk', 'network', 'cybersecurity', 'micropython', 'mpremote',
+            'Logic Analyzer', 'Sigrok', 'Pulseview', 'Device Monitoring'
+        ];
+        const KNOWN_CATS = ['tutorial', 'tips'];
+
+        function buildPills() {
+            const tagContainer = document.getElementById('tagPills');
+            KNOWN_TAGS.forEach(tag => {
+                const label = document.createElement('label');
+                label.className = 'pill';
+                label.innerHTML = `<input type="checkbox" value="${tag}"> ${tag}`;
+                tagContainer.appendChild(label);
+            });
+            const catContainer = document.getElementById('categoryPills');
+            KNOWN_CATS.forEach(cat => {
+                const label = document.createElement('label');
+                label.className = 'pill';
+                label.innerHTML = `<input type="checkbox" value="${cat}"> ${cat}`;
+                catContainer.appendChild(label);
+            });
+        }
+        buildPills();
+
+        function getSelectedTags() {
+            return Array.from(document.querySelectorAll('#tagPills input[type="checkbox"]:checked'))
+                .map(cb => cb.value);
+        }
+
+        function getSelectedCategories() {
+            return Array.from(document.querySelectorAll('#categoryPills input[type="checkbox"]:checked'))
+                .map(cb => cb.value);
+        }
+
+        document.getElementById('customTag').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const val = this.value.trim();
+                if (val) {
+                    const label = document.createElement('label');
+                    label.className = 'pill';
+                    label.innerHTML = `<input type="checkbox" value="${val}" checked> ${val}`;
+                    document.getElementById('tagPills').appendChild(label);
+                    this.value = '';
+                }
+            }
+        });
 
         // Auto-preview on content change
         document.getElementById('content').addEventListener('input', updatePreview);
@@ -572,8 +649,11 @@
                     <button class="remove-btn" onclick="removeImage(${index})" title="Remove">×</button>
                     <img src="${img.data}" alt="${img.name}">
                     <div class="image-info">
-                        ${img.name}<br>
-                        <button class="button" style="margin: 5px 0; padding: 5px 10px; font-size: 10px; background: #404040; border: 1px solid #555;" onclick="copyImageMarkdown('${img.name}')">Copy MD</button>
+                        <input type="text" value="${img.name}"
+                            style="width:100%; margin-bottom:4px; padding:4px 6px; font-size:11px; background:#1e1e1e; color:#e0e0e0; border:1px solid #555; border-radius:3px;"
+                            title="Rename file"
+                            oninput="uploadedImages[${index}].name = this.value.trim() || uploadedImages[${index}].name">
+                        <button class="button" style="margin: 3px 0; padding: 5px 10px; font-size: 10px; background: #404040; border: 1px solid #555;" onclick="copyImageMarkdown(${index})">Copy MD</button>
                     </div>
                 `;
                 container.appendChild(div);
@@ -585,10 +665,9 @@
             displayUploadedImages();
         }
 
-        function copyImageMarkdown(filename) {
-            // Generate markdown for image based on file structure
+        function copyImageMarkdown(index) {
+            const filename = uploadedImages[index].name;
             const date = document.getElementById('date').value;
-            const year = date.split('-')[0];
             const title = document.getElementById('title').value || 'untitled';
             const slug = slugify(title);
             
@@ -667,10 +746,9 @@
             const title = document.getElementById('title').value;
             const date = document.getElementById('date').value;
             const subtitle = document.getElementById('subtitle').value;
-            const excerpt = document.getElementById('excerpt').value;
             const comments = document.getElementById('comments').checked;
-            const tags = document.getElementById('tags').value;
-            const categories = document.getElementById('categories').value;
+            const tagList = getSelectedTags();
+            const catList = getSelectedCategories();
             const content = document.getElementById('content').value;
 
             if (!title || !date || !content) {
@@ -688,27 +766,12 @@
                 frontmatter += `subtitle: "${subtitle.replace(/"/g, '\\"')}"\n`;
             }
             
-            if (excerpt) {
-                frontmatter += `excerpt: >-\n`;
-                // Indent excerpt content
-                const excerptLines = excerpt.split('\n');
-                excerptLines.forEach(line => {
-                    frontmatter += `  ${line}\n`;
-                });
+            if (tagList.length > 0) {
+                frontmatter += `tags: [${tagList.join(', ')}]\n`;
             }
             
-            if (tags) {
-                const tagList = tags.split(',').map(t => t.trim()).filter(t => t);
-                if (tagList.length > 0) {
-                    frontmatter += `tags: [${tagList.join(', ')}]\n`;
-                }
-            }
-            
-            if (categories) {
-                const catList = categories.split(',').map(c => c.trim()).filter(c => c);
-                if (catList.length > 0) {
-                    frontmatter += `categories: [${catList.join(', ')}]\n`;
-                }
+            if (catList.length > 0) {
+                frontmatter += `categories: [${catList.join(', ')}]\n`;
             }
             
             frontmatter += `comments: ${comments}\n`;
@@ -745,10 +808,9 @@
             const title = document.getElementById('title').value;
             const date = document.getElementById('date').value;
             const subtitle = document.getElementById('subtitle').value;
-            const excerpt = document.getElementById('excerpt').value;
             const comments = document.getElementById('comments').checked;
-            const tags = document.getElementById('tags').value;
-            const categories = document.getElementById('categories').value;
+            const tagList = getSelectedTags();
+            const catList = getSelectedCategories();
             const content = document.getElementById('content').value;
 
             if (!title || !date || !content) {
@@ -778,27 +840,12 @@
                 frontmatter += `subtitle: "${subtitle.replace(/"/g, '\\"')}"\n`;
             }
             
-            if (excerpt) {
-                frontmatter += `excerpt: >-\n`;
-                // Indent excerpt content
-                const excerptLines = excerpt.split('\n');
-                excerptLines.forEach(line => {
-                    frontmatter += `  ${line}\n`;
-                });
+            if (tagList.length > 0) {
+                frontmatter += `tags: [${tagList.join(', ')}]\n`;
             }
             
-            if (tags) {
-                const tagList = tags.split(',').map(t => t.trim()).filter(t => t);
-                if (tagList.length > 0) {
-                    frontmatter += `tags: [${tagList.join(', ')}]\n`;
-                }
-            }
-            
-            if (categories) {
-                const catList = categories.split(',').map(c => c.trim()).filter(c => c);
-                if (catList.length > 0) {
-                    frontmatter += `categories: [${catList.join(', ')}]\n`;
-                }
+            if (catList.length > 0) {
+                frontmatter += `categories: [${catList.join(', ')}]\n`;
             }
             
             frontmatter += `comments: ${comments}\n`;
@@ -846,14 +893,94 @@
             downloadPackage();
         }
 
+        async function saveToFolder() {
+            const title = document.getElementById('title').value;
+            const date = document.getElementById('date').value;
+            const subtitle = document.getElementById('subtitle').value;
+            const comments = document.getElementById('comments').checked;
+            const tagList = getSelectedTags();
+            const catList = getSelectedCategories();
+            const content = document.getElementById('content').value;
+
+            if (!title || !date || !content) {
+                showCopyNotification('⚠️ Please fill in required fields!');
+                return;
+            }
+
+            if (!window.showDirectoryPicker) {
+                showCopyNotification('⚠️ Use Chrome or Edge to save directly to a folder');
+                return;
+            }
+
+            const slug = slugify(title);
+            const year = date.split('-')[0];
+            const filename = `${date}-${slug}.md`;
+
+            // Build frontmatter
+            let frontmatter = '---\n';
+            frontmatter += `layout: post\n`;
+            frontmatter += `title: "${title.replace(/"/g, '\\"')}"\n`;
+            frontmatter += `date: ${date}\n`;
+
+            if (subtitle) {
+                frontmatter += `subtitle: "${subtitle.replace(/"/g, '\\"')}"\n`;
+            }
+
+            if (tagList.length > 0) frontmatter += `tags: [${tagList.join(', ')}]\n`;
+
+            if (catList.length > 0) frontmatter += `categories: [${catList.join(', ')}]\n`;
+
+            frontmatter += `comments: ${comments}\n`;
+            frontmatter += '---\n\n';
+
+            const fullContent = frontmatter + addCodeHeaders(content);
+
+            try {
+                const rootDir = await window.showDirectoryPicker({ mode: 'readwrite' });
+
+                // Write _posts/year/filename.md
+                const postsDir = await rootDir.getDirectoryHandle('_posts', { create: true });
+                const yearDir = await postsDir.getDirectoryHandle(year, { create: true });
+                const fileHandle = await yearDir.getFileHandle(filename, { create: true });
+                const writable = await fileHandle.createWritable();
+                await writable.write(fullContent);
+                await writable.close();
+
+                // Write images/slug/imagefile
+                if (uploadedImages.length > 0) {
+                    const imagesDir = await rootDir.getDirectoryHandle('images', { create: true });
+                    const slugDir = await imagesDir.getDirectoryHandle(slug, { create: true });
+                    for (const img of uploadedImages) {
+                        const base64Data = img.data.split(',')[1];
+                        const byteString = atob(base64Data);
+                        const bytes = new Uint8Array(byteString.length);
+                        for (let i = 0; i < byteString.length; i++) {
+                            bytes[i] = byteString.charCodeAt(i);
+                        }
+                        const imgHandle = await slugDir.getFileHandle(img.name, { create: true });
+                        const imgWritable = await imgHandle.createWritable();
+                        await imgWritable.write(bytes);
+                        await imgWritable.close();
+                    }
+                }
+
+                const imageMsg = uploadedImages.length > 0 ? ` + ${uploadedImages.length} image(s)` : '';
+                showCopyNotification(`✅ Saved: _posts/${year}/${filename}${imageMsg}`);
+            } catch (error) {
+                if (error.name !== 'AbortError') {
+                    showCopyNotification('❌ Error saving to folder!');
+                    console.error('Save error:', error);
+                }
+            }
+        }
+
         function clearForm() {
             if (confirm('Are you sure you want to clear the form? This cannot be undone.')) {
                 document.getElementById('title').value = '';
                 document.getElementById('subtitle').value = '';
-                document.getElementById('excerpt').value = '';
                 document.getElementById('comments').checked = true;
-                document.getElementById('tags').value = '';
-                document.getElementById('categories').value = '';
+                document.getElementById('customTag').value = '';
+                document.querySelectorAll('#tagPills input[type="checkbox"], #categoryPills input[type="checkbox"]').forEach(cb => cb.checked = false);
                 document.getElementById('content').value = '';
                 document.getElementById('date').valueAsDate = new Date();
                 uploadedImages = [];
