@@ -73,7 +73,7 @@ The real lesson is what's possible when a human who understands the problem work
 
 Here's what the final app looks like:
 
-![appcompare.jpg](/images/appcompare.jpg)
+![appcompare.jpg](/images/claude_app/appcompare.jpg)
 
 What about my coworker? What did he think?
 

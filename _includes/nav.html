@@ -7,25 +7,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <button type="button" class="navbar-toggle" onclick="toggleSidebar()" title="Search &amp; Archive" style="padding: 9px 12px;">
+        <i class="fa fa-search"></i>
+      </button>
       {% if site.title-img %}
-        <a class="navbar-brand navbar-brand-logo" href="{{ site.url }}"><img src="{{ site.title-img }}"/></a>
+        <a class="navbar-brand navbar-brand-logo" href="{{ site.url }}/aboutme"><img src="{{ site.title-img }}"/></a>
       {% else %}
-        <a class="navbar-brand" href="{{ site.url }}">{{ site.title }}</a>
+        <a class="navbar-brand" href="{{ site.url }}/aboutme">{{ site.title }}</a>
       {% endif %}
     </div>
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
-        <!-- Search Field - Temporarily disabled due to server issues -->
-        <!-- 
-        <li class="search-container">
-          <div class="search-box">
-            <input type="text" id="search-input" placeholder="Search posts..." autocomplete="off">
-            <i class="fa fa-search search-icon"></i>
-            <div id="search-results" class="search-results"></div>
-          </div>
+        <li>
+          <a href="javascript:void(0)" onclick="toggleSidebar()" title="Search &amp; Archive">
+            <i class="fa fa-search"></i>
+          </a>
         </li>
-        -->
+        <li>
+          <a href="https://www.linkedin.com/in/mark-go-0439791b7/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+            <i class="fa fa-linkedin"></i>
+          </a>
+        </li>
       {% for link in site.navbar-links %}
         {% if link[1].first %}
           <li class="navlinks-container">
