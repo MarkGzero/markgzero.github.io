@@ -7,6 +7,8 @@ tags: [powershell, git]
 comments: true
 ---
 
+> EDIT/DISCLAIMER: Do not actually use this to track billable hours. This is just a rough estimate and could lead to some potential "fraud" issues. 
+
 I was procrastinating, as I do, and started wondering at some point how much time I've actually spent on some of these projects. 
 
 I would like to be able to tell people at work, "Bro, btw, I've spent about 100 hours on this project so far," but I dont want to track my time manually. 
@@ -56,3 +58,4 @@ TotalMilliseconds : 102959000
 ```
 
 Yeah, thats about right, almost 29 hours on this nerd project. :D 
+
