@@ -21,5 +21,4 @@ I love connecting with fellow tech enthusiasts, learners, and builders. Feel fre
 
 ## Featured
 
-**[The PowerShell Podcast](https://www.pdq.com/resources/the-powershell-podcast/ep-156-exploring-the-power-of-iot-and-powershell-with-mark-go/)** — Episode 156: Exploring the Power of IoT and PowerShell with Mark Go
-
+<a href="https://www.pdq.com/resources/the-powershell-podcast/ep-156-exploring-the-power-of-iot-and-powershell-with-mark-go/" target="_blank" rel="noopener noreferrer">The PowerShell Podcast Episode 156: Exploring the Power of IoT and PowerShell with Mark Go</a>
