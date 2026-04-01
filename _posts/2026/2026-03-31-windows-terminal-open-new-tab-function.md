@@ -2,7 +2,7 @@
 layout: post
 title: "Generating Random RGB Colors in PowerShell"
 date: 2026-03-31
-subtitle: "there are like four ways to do this and i tried all of them."
+subtitle: "more complex and interesting that I initially thought"
 tags: [powershell, windows-terminal]
 comments: true
 ---
@@ -13,18 +13,17 @@ Here's a simple powershell function that
 
 {% include codeHeader.html %}
 ```powershell
-function nt-powershell {
+function nt {
     [cmdletbinding()]
     param(
         [string]$Directory = $env:USERPROFILE,
         [string]$RGB
     )
-
     # get RGB
     if([string]::isnullorempty($RGB)) {
         $rgb = "#{0:X6}" -f (Get-Random -Minimum 0 -Maximum 0x1000000)
     }
-    
+    # wt command    
     wt -w 0 nt -p 'Windows PowerShell' -d $Directory --title 'WinPowerShell' --tabColor $rgb
 }
 ```
