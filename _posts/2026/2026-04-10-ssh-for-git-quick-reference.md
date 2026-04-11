@@ -7,6 +7,8 @@ tags: [git, ssh, github, linux]
 comments: true
 ---
 
+> mark notes: this blog post was created with the help of an AI assistant. 
+
 Every time I set up a new machine, I forget at least one of these steps. So here's the whole thing in one place.
 
 ## Generate a key
