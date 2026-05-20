@@ -44,7 +44,7 @@ The goal was one self-contained EXE with no dependencies.
 
 {% include codeHeader.html %}
 ```powershell
-dotnet publish src/Cnd2Poam.App/Cnd2Poam.App.csproj `
+dotnet publish src/appname/appname.csproj `
   -c Release `
   -r win-x64 `
   --self-contained true `
@@ -53,7 +53,7 @@ dotnet publish src/Cnd2Poam.App/Cnd2Poam.App.csproj `
   -o publish\alpha
 ```
 
-Output: `cnd2poam.exe` at about 169 MB, and a `.pdb` sitting next to it. Don't distribute the pdb.
+Output: `appname.exe` at about 169 MB, and a `.pdb` sitting next to it. Don't distribute the pdb.
 
 I had a code signing certificate installed in my Windows cert store. Signing the EXE means users get a clean "Verified publisher" in SmartScreen and UAC prompts instead of the "Windows protected your PC" red warning.
 
