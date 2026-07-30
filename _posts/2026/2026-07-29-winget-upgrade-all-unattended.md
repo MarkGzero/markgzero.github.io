@@ -11,10 +11,20 @@ comments: true
 
 {% include codeHeader.html %}
 ```powershell
+# winget needs an elevated session to upgrade machine-scoped packages.
+$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+$isAdmin = $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+
+if (-not $isAdmin) {
+    throw "This script must be run as Administrator."
+}
+
+# Log stdout/stderr separately so a failed upgrade is easy to diagnose after the fact.
 $logPath   = Join-Path $env:TEMP 'winget-upgrade-all.log'
 $errorPath = Join-Path $env:TEMP 'winget-upgrade-all-error.log'
 $timeoutMs = [int][TimeSpan]::FromMinutes(30).TotalMilliseconds
 
+# Upgrade everything winget knows about, without any prompts.
 $arguments = @(
     'upgrade'
     '--all'
@@ -43,6 +53,7 @@ try {
 
     $exitCode = $process.ExitCode
 
+    # Return a summary object instead of raw exit code so callers can log/branch on it.
     [pscustomobject]@{
         ExitCode = $exitCode
         Succeeded = ($exitCode -eq 0)
